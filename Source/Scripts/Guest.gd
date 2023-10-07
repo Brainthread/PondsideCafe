@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 var requestNode
 var insectType = ""
 var requestType = ""
@@ -8,7 +8,7 @@ func _ready():
 	pass # Replace with function body.
 
 func setup(insect, request):
-	var requestScene = preload("res://Scenes/request.tscn")
+	var requestScene = preload("res://Scenes/Objects/request.tscn")
 	var anim = get_node("InsectAnim")
 	requestNode = requestScene.instantiate()
 	insectType = insect

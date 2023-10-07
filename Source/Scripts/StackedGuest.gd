@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var guestScene = preload("res://Scenes/guest.tscn")
+@onready var guestScene = preload("res://Scenes/Objects/guest.tscn")
 var guestList = []
 var initialPos = Vector2(0,0)
 var waiting = false

@@ -1,58 +1,80 @@
-[gd_scene load_steps=6 format=3 uid="uid://br67t6ca1tg"]
+[gd_scene load_steps=12 format=3 uid="uid://br67t6ca1tg"]
 
+[ext_resource type="Script" path="res://Scenes/Stages/SceneCam.gd" id="1_nom56"]
 [ext_resource type="PackedScene" uid="uid://kd7uxyh1weri" path="res://Scenes/Objects/frog.tscn" id="1_oa0m2"]
-[ext_resource type="Texture2D" uid="uid://crp5tah3lnqi8" path="res://Sprites/placeholder_leaf.png" id="2_b0vld"]
 [ext_resource type="Script" path="res://Scripts/StackedGuest.gd" id="3_3r3w5"]
+[ext_resource type="Texture2D" uid="uid://x1h4dp8xej62" path="res://Sprites/tree_background.png" id="4_0173w"]
+[ext_resource type="Texture2D" uid="uid://u8agb452f676" path="res://Sprites/background_grass.png" id="5_nyeye"]
+[ext_resource type="Texture2D" uid="uid://vai0eqiocyku" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
+[ext_resource type="Texture2D" uid="uid://ut74mfwxgre7" path="res://Sprites/bord.png" id="6_iomv4"]
+[ext_resource type="Texture2D" uid="uid://bw4av76i0pj5o" path="res://Sprites/pall.png" id="7_u4wul"]
 
 [sub_resource type="TileSet" id="TileSet_03jer"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlbuq"]
 size = Vector2(309, 34.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_550cl"]
+radius = 20.0
+
 [node name="Café" type="Node2D"]
 
 [node name="SceneCam" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(1.85, 1.85)
+script = ExtResource("1_nom56")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_03jer")
 format = 2
 
 [node name="Frog" parent="." instance=ExtResource("1_oa0m2")]
-
-[node name="Leaf" type="StaticBody2D" parent="."]
-z_index = -5
-position = Vector2(-223, 31)
-scale = Vector2(1, 1.136)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Leaf"]
-position = Vector2(-5.5, 15.25)
-shape = SubResource("RectangleShape2D_vlbuq")
-one_way_collision = true
-
-[node name="PlaceholderLeaf" type="Sprite2D" parent="Leaf"]
-texture_filter = 1
-texture_repeat = 1
-texture = ExtResource("2_b0vld")
-
-[node name="Leaf2" type="StaticBody2D" parent="."]
-z_index = -5
-position = Vector2(93, -34)
-scale = Vector2(0.683, 1)
-collision_layer = 3
-metadata/IsGround = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Leaf2"]
-position = Vector2(-5.5, 15.25)
-shape = SubResource("RectangleShape2D_vlbuq")
-one_way_collision = true
-
-[node name="PlaceholderLeaf" type="Sprite2D" parent="Leaf2"]
-texture_filter = 1
-texture_repeat = 1
-texture = ExtResource("2_b0vld")
+position = Vector2(-242, -30)
 
 [node name="StackedGuest" type="Node2D" parent="."]
-position = Vector2(-288, -3)
+position = Vector2(-222, 98)
 script = ExtResource("3_3r3w5")
+
+[node name="Background" type="StaticBody2D" parent="."]
+position = Vector2(93, -34)
+scale = Vector2(0.777601, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background"]
+position = Vector2(318.93, 183)
+scale = Vector2(6.12139, 1)
+shape = SubResource("RectangleShape2D_vlbuq")
+one_way_collision = true
+
+[node name="TreeBackground" type="Sprite2D" parent="Background"]
+z_index = -7
+position = Vector2(140.175, 35)
+scale = Vector2(1.28601, 1)
+texture = ExtResource("4_0173w")
+
+[node name="BackgroundGrass" type="Sprite2D" parent="Background"]
+z_index = -6
+position = Vector2(138.889, 35)
+scale = Vector2(1.28601, 1)
+texture = ExtResource("5_nyeye")
+
+[node name="ForegroundGrass" type="Sprite2D" parent="Background"]
+z_index = 1
+position = Vector2(136.317, 33)
+scale = Vector2(1.28601, 1)
+texture = ExtResource("6_c7n0r")
+
+[node name="Furniture" type="Area2D" parent="."]
+position = Vector2(-136, 108)
+
+[node name="Table" type="Sprite2D" parent="Furniture"]
+z_index = -1
+position = Vector2(-51, 1)
+texture = ExtResource("6_iomv4")
+
+[node name="Chair" type="Sprite2D" parent="Furniture"]
+z_index = -2
+position = Vector2(-86, 0)
+texture = ExtResource("7_u4wul")
+
+[node name="PlateRange" type="CollisionShape2D" parent="Furniture"]
+position = Vector2(-51, -11)
+shape = SubResource("CircleShape2D_550cl")
