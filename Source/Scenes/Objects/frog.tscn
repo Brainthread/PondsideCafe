@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://kd7uxyh1weri"]
+
+[ext_resource type="Script" path="res://Scripts/Frog.gd" id="1_kq0gs"]
+[ext_resource type="Texture2D" uid="uid://dibmcl6gn77k" path="res://Sprites/Frog.png" id="2_7kg3w"]
+[ext_resource type="Script" path="res://Scripts/Groundray.gd" id="3_nsrjf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t7av"]
+size = Vector2(32, 32)
+
+[node name="Frog" type="RigidBody2D"]
+position = Vector2(-228, -35)
+gravity_scale = 0.8
+lock_rotation = true
+script = ExtResource("1_kq0gs")
+jumpForce = 500
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("2_7kg3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0t7av")
+
+[node name="Groundray" type="RayCast2D" parent="."]
+target_position = Vector2(0, 24)
+collide_with_areas = true
+script = ExtResource("3_nsrjf")
