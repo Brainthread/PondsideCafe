@@ -5,10 +5,10 @@ extends RigidBody2D
 @export var full_mouse_distance:int = 150
 @export var tongue_speed:int = 900
 @export var frog_lick_force = 300
-var lick_area
-var licked_on = false;
 @export var target_lick_type:int = 0
 @export var grapple_termination_threshold:int = 5
+var lick_area
+var licked_on = false;
 var lick_target_distance
 var lick_target_interpolation = 0
 var lick_target
