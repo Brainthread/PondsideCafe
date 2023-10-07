@@ -14,7 +14,6 @@ var lick_target_distance
 var lick_target_interpolation = 0
 var lick_target
 var tongue_position = Vector2(0,0)
-var tongueTarget
 var tongueLine  
 var ground_ray
 var ground_zone
@@ -23,7 +22,6 @@ var ground_zone
 func _ready():
 	ground_ray = get_node("Groundray")
 	ground_zone = get_node("Groundcheck")
-	tongueTarget = get_node("TongueTarget")
 	tongueLine = get_node("Line2D")
 	lick_area = get_node("LickCheck")
 	tongue_position = Vector2(0, 0)
@@ -36,7 +34,6 @@ func _process(delta):
 func _handleLick(delta):
 	if(licked_on):
 		var relative_position = lick_target - position
-		tongueTarget.position = relative_position
 		tongueLine.points[1] = tongue_position
 		lick_target_interpolation += delta*tongue_speed/lick_target_distance
 		if(lick_target_interpolation > 1):
@@ -51,13 +48,12 @@ func _handleLick(delta):
 		if target_lick_type == 0 && lick_target_interpolation == 1:
 			_reset_lick()
 	else:
-		gravity_scale = 0.3
-	tongueTarget.visible = licked_on
+		gravity_scale = 1
 	tongueLine.visible = licked_on
 	lick_area.visible = licked_on
 
 func _handle_lick_attachment(delta, relative_position):
-	gravity_scale = 0
+	gravity_scale = 0.3
 	linear_velocity = relative_position.normalized() * frog_lick_force
 	if lick_target.distance_to(position) < grapple_termination_threshold:
 		_reset_lick()
@@ -72,6 +68,7 @@ func _handle_lick_collision(delta):
 		return
 	target_lick_type = lick_type
 	lick_target = tongue_position + position
+	lick_target_interpolation = 1
 	if(lick_type == 1):
 		print("Lick Draggable")
 	if(lick_type == 2):
