@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://7u2ksvu61krc"]
+
+[ext_resource type="Script" path="res://Scripts/Guest.gd" id="1_5wrtx"]
+[ext_resource type="Texture2D" uid="uid://b7xoxg5rjg63f" path="res://Sprites/worm.png" id="2_maaum"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jrj6t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_maaum")
+}],
+"loop": true,
+"name": &"worm",
+"speed": 5.0
+}]
+
+[node name="Guest" type="Node2D"]
+position = Vector2(-297, -28)
+script = ExtResource("1_5wrtx")
+
+[node name="InsectAnim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jrj6t")
+animation = &"worm"

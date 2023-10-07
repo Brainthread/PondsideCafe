@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://br67t6ca1tg"]
+[gd_scene load_steps=6 format=3 uid="uid://br67t6ca1tg"]
 
 [ext_resource type="PackedScene" uid="uid://kd7uxyh1weri" path="res://Scenes/Objects/frog.tscn" id="1_oa0m2"]
 [ext_resource type="Texture2D" uid="uid://crp5tah3lnqi8" path="res://Sprites/placeholder_leaf.png" id="2_b0vld"]
+[ext_resource type="Script" path="res://Scripts/StackedGuest.gd" id="3_3r3w5"]
 
 [sub_resource type="TileSet" id="TileSet_03jer"]
 
@@ -51,3 +52,7 @@ one_way_collision = true
 texture_filter = 1
 texture_repeat = 1
 texture = ExtResource("2_b0vld")
+
+[node name="StackedGuest" type="Node2D" parent="."]
+position = Vector2(-288, -3)
+script = ExtResource("3_3r3w5")
