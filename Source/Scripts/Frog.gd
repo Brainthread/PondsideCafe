@@ -29,8 +29,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	_handleInput(delta)
 	_handleLick(delta)
+	_handleInput(delta)
 
 func _handleLick(delta):
 	if(licked_on):
@@ -43,8 +43,18 @@ func _handleLick(delta):
 		tongue_position = lerp(Vector2(12, 2), lick_target-position, lick_target_interpolation)
 		lick_area.position = tongue_position
 		_handle_lick_collision(delta)
+		if target_lick_type == 1:
+			_handle_lick_draggable(delta)
+		if target_lick_type == 2:
+			_handle_lick_attachment(delta)
 		
 	tongueTarget.visible = licked_on
+
+func _handle_lick_attachment(delta):
+	pass
+	
+func _handle_lick_draggable(delta):
+	pass
 
 func _handle_lick_collision(delta):
 	var lick_type = lick_area._is_licking()
@@ -62,7 +72,6 @@ func _handleInput(delta):
 	var jumpAllowed = _jumpAllowed();
 	if(Input.is_action_just_pressed("jump")&&jumpAllowed):
 		_jump(mouse_position)
-	
 	if(Input.is_action_just_pressed("lick")):
 		_lick(mouse_position)
 
