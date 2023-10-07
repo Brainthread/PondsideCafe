@@ -4,7 +4,7 @@ extends RigidBody2D
 @export var vertical_jump_force:int = 300
 @export var ground_check_distance:int = 10
 @export var full_mouse_distance:int = 20
-@export var tongue_speed:int = 900
+@export var tongue_speed:int = 600
 @export var frog_lick_force = 300
 @export var target_lick_type:int = 0
 @export var grapple_termination_threshold:int = 5
@@ -86,8 +86,11 @@ func _handleInput(delta):
 		_lick(mouse_position)
 
 func _lick(mouse_position):
-	_reset_lick()
-	lick_target = mouse_position
+	if(licked_on):
+		_reset_lick()
+		return
+	var target_direction = (mouse_position - position).normalized()
+	lick_target = mouse_position + target_direction*64
 	lick_target_distance = (mouse_position - position).length()
 	licked_on = true
 
