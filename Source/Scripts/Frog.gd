@@ -4,11 +4,13 @@ extends RigidBody2D
 @export var groundCheckDistance:int = 10
 @export var fullMouseDistance:int = 150
 var groundRay
+var groundZone
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	groundRay = get_node("Groundray")
+	groundZone = get_node("Area2D")
 	pass # Replace with function body.
 
 
@@ -33,6 +35,6 @@ func _handleInput(delta):
 	pass
 
 func _jumpAllowed():
-	if(groundRay._is_on_ground()):
+	if(groundZone._is_on_ground()):
 		return true
 	return false

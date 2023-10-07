@@ -23,7 +23,7 @@ format = 2
 z_index = -5
 position = Vector2(-223, 31)
 scale = Vector2(4.76, 1)
-metadata/IsGround = true
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Leaf"]
 position = Vector2(-5.5, 15.25)
@@ -31,6 +31,23 @@ shape = SubResource("RectangleShape2D_vlbuq")
 one_way_collision = true
 
 [node name="PlaceholderLeaf" type="Sprite2D" parent="Leaf"]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("2_b0vld")
+
+[node name="Leaf2" type="StaticBody2D" parent="."]
+z_index = -5
+position = Vector2(93, -34)
+scale = Vector2(0.777601, 1)
+collision_layer = 3
+metadata/IsGround = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leaf2"]
+position = Vector2(-5.5, 15.25)
+shape = SubResource("RectangleShape2D_vlbuq")
+one_way_collision = true
+
+[node name="PlaceholderLeaf" type="Sprite2D" parent="Leaf2"]
 texture_filter = 1
 texture_repeat = 1
 texture = ExtResource("2_b0vld")
