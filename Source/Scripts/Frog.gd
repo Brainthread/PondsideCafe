@@ -6,6 +6,7 @@ extends RigidBody2D
 @export var tongue_speed:int = 900
 var lick_area
 var licked_on = false;
+@export var target_lick_type:int = 0
 var lick_target_distance
 var lick_target_interpolation = 0
 var lick_target
@@ -41,8 +42,20 @@ func _handleLick(delta):
 			lick_target_interpolation = 1
 		tongue_position = lerp(Vector2(12, 2), lick_target-position, lick_target_interpolation)
 		lick_area.position = tongue_position
+		_handle_lick_collision(delta)
 		
 	tongueTarget.visible = licked_on
+
+func _handle_lick_collision(delta):
+	var lick_type = lick_area._is_licking()
+	if(lick_type == 0||target_lick_type != 0):
+		return
+	target_lick_type = lick_type
+	lick_target = tongue_position + position
+	if(lick_type == 1):
+		print("Lick Draggable")
+	if(lick_type == 2):
+		print("Lick Attachment")
 
 func _handleInput(delta):
 	var mouse_position = get_global_mouse_position()
@@ -55,11 +68,11 @@ func _handleInput(delta):
 
 func _lick(mouse_position):
 	lick_target = mouse_position
+	target_lick_type = 0
 	lick_target_distance = (mouse_position - position).length()
 	licked_on = true
-	tongue_position = Vector2(0,0)
+	tongue_position = Vector2(12, 2)
 	lick_target_interpolation = 0
-	pass
 
 func _jump(mouse_position):
 	var relative_mouse_position = position - mouse_position
