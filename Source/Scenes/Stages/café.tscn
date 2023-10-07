@@ -23,6 +23,8 @@ format = 2
 
 [node name="Frog" type="RigidBody2D" parent="."]
 position = Vector2(-228, -35)
+gravity_scale = 0.8
+lock_rotation = true
 script = ExtResource("1_cd75n")
 
 [node name="Sprite2D" type="Sprite2D" parent="Frog"]
@@ -33,9 +35,13 @@ texture = ExtResource("1_mxpuw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Frog"]
 shape = SubResource("RectangleShape2D_0t7av")
 
+[node name="RayCast2D" type="RayCast2D" parent="Frog"]
+target_position = Vector2(0, 24)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 z_index = -5
 position = Vector2(-223, 31)
+metadata/IsGround = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-5.5, 15.25)

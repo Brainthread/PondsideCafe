@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+var jumpForce = 300;
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,10 +15,14 @@ func _process(delta):
 
 
 func _handleInput(delta):
-	var mouseposition = get_viewport().get_mouse_position()
+	var mouseposition = get_global_mouse_position()
 	var relativeMouseposition = position - mouseposition
+	var jumpVelocity = Vector2(0,0) 
+	jumpVelocity = -relativeMouseposition.normalized() * jumpForce
+	
 	if(Input.is_action_just_pressed("jump")):
-		print(relativeMouseposition)
+		print("Jumped! " + str(jumpVelocity))
+		linear_velocity = jumpVelocity;
 	
 	
 	pass
