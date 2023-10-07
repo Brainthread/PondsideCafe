@@ -1,9 +1,48 @@
-[gd_scene format=3 uid="uid://br67t6ca1tg"]
+[gd_scene load_steps=7 format=3 uid="uid://br67t6ca1tg"]
+
+[ext_resource type="Script" path="res://Scenes/Stages/Frog.gd" id="1_cd75n"]
+[ext_resource type="Texture2D" uid="uid://c3760bpytavu" path="res://Sprites/placeholder_Frog.png" id="1_mxpuw"]
+[ext_resource type="Texture2D" uid="uid://crp5tah3lnqi8" path="res://Sprites/placeholder_leaf.png" id="2_b0vld"]
+
+[sub_resource type="TileSet" id="TileSet_03jer"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t7av"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlbuq"]
+size = Vector2(309, 34.5)
 
 [node name="Café" type="Node2D"]
 
 [node name="SceneCam" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 
 [node name="TileMap" type="TileMap" parent="."]
-cell_quadrant_size = 32
+tile_set = SubResource("TileSet_03jer")
 format = 2
+
+[node name="Frog" type="RigidBody2D" parent="."]
+position = Vector2(-228, -35)
+script = ExtResource("1_cd75n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Frog"]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("1_mxpuw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Frog"]
+shape = SubResource("RectangleShape2D_0t7av")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = -5
+position = Vector2(-223, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-5.5, 15.25)
+shape = SubResource("RectangleShape2D_vlbuq")
+one_way_collision = true
+
+[node name="PlaceholderLeaf" type="Sprite2D" parent="StaticBody2D"]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("2_b0vld")
