@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://br67t6ca1tg"]
+[gd_scene load_steps=14 format=3 uid="uid://br67t6ca1tg"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/SceneCam.gd" id="1_nom56"]
 [ext_resource type="PackedScene" uid="uid://kd7uxyh1weri" path="res://Scenes/Objects/frog.tscn" id="1_oa0m2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c41olgvnwcj8p" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
 [ext_resource type="Texture2D" path="res://Sprites/bord.png" id="6_iomv4"]
 [ext_resource type="Texture2D" path="res://Sprites/pall.png" id="7_u4wul"]
+[ext_resource type="Texture2D" uid="uid://bbayiev3h0i1h" path="res://icon.svg" id="9_cjjxi"]
 
 [sub_resource type="TileSet" id="TileSet_03jer"]
 
@@ -16,6 +17,9 @@ size = Vector2(309, 34.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_550cl"]
 radius = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2vbc"]
+size = Vector2(12.1, 12.7)
 
 [node name="Café" type="Node2D"]
 
@@ -80,3 +84,47 @@ texture = ExtResource("7_u4wul")
 [node name="PlateRange" type="CollisionShape2D" parent="Furniture"]
 position = Vector2(-51, -11)
 shape = SubResource("CircleShape2D_550cl")
+
+[node name="Statics" type="Node2D" parent="."]
+
+[node name="Jump_Post" type="StaticBody2D" parent="Statics"]
+z_index = -3
+position = Vector2(103, -101)
+collision_layer = 3
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Statics/Jump_Post"]
+position = Vector2(1.5, 0.500002)
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_j2vbc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Statics/Jump_Post"]
+texture = ExtResource("9_cjjxi")
+
+[node name="Jump_Post2" type="StaticBody2D" parent="Statics"]
+z_index = -3
+position = Vector2(329, -170)
+collision_layer = 3
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Statics/Jump_Post2"]
+position = Vector2(1.5, 0.500002)
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_j2vbc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Statics/Jump_Post2"]
+texture = ExtResource("9_cjjxi")
+
+[node name="Jump_Post3" type="StaticBody2D" parent="Statics"]
+z_index = -3
+position = Vector2(577, -141)
+collision_layer = 3
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Statics/Jump_Post3"]
+position = Vector2(1.5, 0.500002)
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_j2vbc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Statics/Jump_Post3"]
+texture = ExtResource("9_cjjxi")
