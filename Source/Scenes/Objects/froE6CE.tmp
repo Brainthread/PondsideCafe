@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://kd7uxyh1weri"]
+
+[ext_resource type="Script" path="res://Scripts/Frog.gd" id="1_kq0gs"]
+[ext_resource type="Texture2D" uid="uid://dibmcl6gn77k" path="res://Sprites/Frog.png" id="2_7kg3w"]
+[ext_resource type="Script" path="res://Scripts/Groundray.gd" id="3_nsrjf"]
+[ext_resource type="Script" path="res://Scenes/Objects/GroundCheckZone.gd" id="4_ejutv"]
+[ext_resource type="Texture2D" uid="uid://d0dj7lkicvx4i" path="res://Sprites/Target.png" id="5_0fih3"]
+[ext_resource type="Texture2D" uid="uid://bbayiev3h0i1h" path="res://icon.svg" id="6_bk3fy"]
+[ext_resource type="Script" path="res://Scripts/LickCheck.gd" id="6_up6nd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t7av"]
+size = Vector2(30, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cn3px"]
+size = Vector2(32, 7)
+
+[sub_resource type="Curve" id="Curve_dwvrv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4xug"]
+
+[node name="Frog" type="RigidBody2D"]
+position = Vector2(-228, -35)
+gravity_scale = 0.8
+lock_rotation = true
+script = ExtResource("1_kq0gs")
+jump_force = 450
+full_mouse_distance = 175
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("2_7kg3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_0t7av")
+
+[node name="Groundray" type="RayCast2D" parent="."]
+target_position = Vector2(0, 24)
+collide_with_areas = true
+script = ExtResource("3_nsrjf")
+
+[node name="Groundcheck" type="Area2D" parent="."]
+collision_mask = 3
+script = ExtResource("4_ejutv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Groundcheck"]
+position = Vector2(0, 20.5)
+shape = SubResource("RectangleShape2D_cn3px")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(12, 2, 0, 0)
+width = 4.0
+width_curve = SubResource("Curve_dwvrv")
+
+[node name="TongueTarget" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="TongueTarget"]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("5_0fih3")
+
+[node name="LickCheck" type="Area2D" parent="."]
+scale = Vector2(0.3, 0.3)
+collision_layer = 14
+collision_mask = 15
+script = ExtResource("6_up6nd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LickCheck"]
+shape = SubResource("CircleShape2D_y4xug")
+
+[node name="Sprite2D" type="Sprite2D" parent="LickCheck"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_bk3fy")

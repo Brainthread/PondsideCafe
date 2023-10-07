@@ -4,9 +4,11 @@ extends RigidBody2D
 @export var ground_check_distance:int = 10
 @export var full_mouse_distance:int = 150
 @export var tongue_speed:int = 900
+@export var frog_lick_force = 300
 var lick_area
 var licked_on = false;
 @export var target_lick_type:int = 0
+@export var grapple_termination_threshold:int = 5
 var lick_target_distance
 var lick_target_interpolation = 0
 var lick_target
@@ -44,16 +46,25 @@ func _handleLick(delta):
 		lick_area.position = tongue_position
 		_handle_lick_collision(delta)
 		if target_lick_type == 1:
-			_handle_lick_draggable(delta)
+			_handle_lick_draggable(delta, relative_position)
 		if target_lick_type == 2:
-			_handle_lick_attachment(delta)
-		
+			_handle_lick_attachment(delta, relative_position)
+		if target_lick_type == 0 && lick_target_interpolation == 1:
+			_reset_lick()
+	else:
+		gravity_scale = 0.3
 	tongueTarget.visible = licked_on
+	tongueLine.visible = licked_on
+	lick_area.visible = licked_on
 
-func _handle_lick_attachment(delta):
-	pass
+func _handle_lick_attachment(delta, relative_position):
+	gravity_scale = 0
+	linear_velocity = relative_position.normalized() * frog_lick_force
+	if lick_target.distance_to(position) < grapple_termination_threshold:
+		_reset_lick()
 	
-func _handle_lick_draggable(delta):
+func _handle_lick_draggable(delta, relative_position):
+	
 	pass
 
 func _handle_lick_collision(delta):
@@ -76,11 +87,16 @@ func _handleInput(delta):
 		_lick(mouse_position)
 
 func _lick(mouse_position):
+	_reset_lick()
 	lick_target = mouse_position
-	target_lick_type = 0
 	lick_target_distance = (mouse_position - position).length()
 	licked_on = true
+
+func _reset_lick():
+	target_lick_type = 0
+	licked_on = false
 	tongue_position = Vector2(12, 2)
+	lick_area.position = tongue_position
 	lick_target_interpolation = 0
 
 func _jump(mouse_position):
