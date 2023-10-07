@@ -3,3 +3,7 @@
 [node name="Café" type="Node2D"]
 
 [node name="SceneCam" type="Camera2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+cell_quadrant_size = 32
+format = 2
