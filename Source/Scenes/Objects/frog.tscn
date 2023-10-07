@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://kd7uxyh1weri"]
+[gd_scene load_steps=11 format=3 uid="uid://kd7uxyh1weri"]
 
 [ext_resource type="Script" path="res://Scripts/Frog.gd" id="1_kq0gs"]
 [ext_resource type="Texture2D" uid="uid://dibmcl6gn77k" path="res://Sprites/Frog.png" id="2_7kg3w"]
 [ext_resource type="Script" path="res://Scripts/Groundray.gd" id="3_nsrjf"]
 [ext_resource type="Script" path="res://Scenes/Objects/GroundCheckZone.gd" id="4_ejutv"]
-[ext_resource type="Texture2D" uid="uid://d0dj7lkicvx4i" path="res://Sprites/Target.png" id="5_0fih3"]
 [ext_resource type="Texture2D" uid="uid://bbayiev3h0i1h" path="res://icon.svg" id="6_bk3fy"]
 [ext_resource type="Script" path="res://Scripts/LickCheck.gd" id="6_up6nd"]
 
@@ -53,13 +52,6 @@ shape = SubResource("RectangleShape2D_cn3px")
 points = PackedVector2Array(12, 2, 0, 0)
 width = 4.0
 width_curve = SubResource("Curve_dwvrv")
-
-[node name="TongueTarget" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="TongueTarget"]
-texture_filter = 1
-texture_repeat = 1
-texture = ExtResource("5_0fih3")
 
 [node name="LickCheck" type="Area2D" parent="."]
 scale = Vector2(0.3, 0.3)
