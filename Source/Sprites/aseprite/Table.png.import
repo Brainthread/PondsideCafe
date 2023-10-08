@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dixqfvluc7q8h"
-path="res://.godot/imported/Leaf-Fall.png-a7f0a210395e509f75f379f06e9021ab.ctex"
+uid="uid://h0d8pbckityy"
+path="res://.godot/imported/Table.png-6375f21ad89f66410e63e05dde6fb5a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/aseprite/Leaf-Fall.png"
-dest_files=["res://.godot/imported/Leaf-Fall.png-a7f0a210395e509f75f379f06e9021ab.ctex"]
+source_file="res://Sprites/aseprite/Table.png"
+dest_files=["res://.godot/imported/Table.png-6375f21ad89f66410e63e05dde6fb5a7.ctex"]
 
 [params]
 
