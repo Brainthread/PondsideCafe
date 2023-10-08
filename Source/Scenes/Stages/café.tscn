@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://br67t6ca1tg"]
+[gd_scene load_steps=24 format=3 uid="uid://br67t6ca1tg"]
 
 [ext_resource type="Script" path="res://Scripts/SceneCam.gd" id="1_33sim"]
 [ext_resource type="PackedScene" uid="uid://kd7uxyh1weri" path="res://Scenes/Objects/frog.tscn" id="1_oa0m2"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/Foodstuff.gd" id="9_lr231"]
 [ext_resource type="Texture2D" uid="uid://vu52ovjcybfe" path="res://Sprites/tree_foreground.png" id="10_krs84"]
 [ext_resource type="Texture2D" uid="uid://dwvgtuw2tg61y" path="res://Sprites/shroom.png" id="12_75jnd"]
+[ext_resource type="Script" path="res://Scripts/FoodSpawnManager.gd" id="14_52emm"]
 
 [sub_resource type="TileSet" id="TileSet_03jer"]
 
@@ -263,6 +264,9 @@ collision_mask = 9
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Water"]
 position = Vector2(375.5, 132)
 shape = SubResource("RectangleShape2D_ew80o")
+
+[node name="FoodSpawnManager" type="Node2D" parent="."]
+script = ExtResource("14_52emm")
 
 [connection signal="area_entered" from="Areas/Water" to="Frog" method="_on_water_area_entered"]
 [connection signal="area_exited" from="Areas/Water" to="Frog" method="_on_water_area_exited"]
