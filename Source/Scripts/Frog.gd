@@ -19,9 +19,7 @@ var ground_ray
 var ground_zone
 
 #Animation
-var anim_player
-var playing 
-var prevY
+signal jumping
 
 
 # Called when the node enters the scene tree for the first time.
@@ -32,23 +30,12 @@ func _ready():
 	lick_area = get_node("LickCheck")
 	tongue_position = Vector2(0, 0)
 	
-	anim_player = get_node("FrogAnim")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_handleLick(delta)
 	_handleInput(delta)
-	_eval_anim()
-
-func _eval_anim():
-	if playing == "Jump-start":
-		if position.y > prevY:
-			anim_player.play("Down")
-			playing = "Down"
-		else:
-			prevY = position.y
-	if playing == "Down" && ground_zone._is_on_ground():
-		anim_player.play("Land")
 
 func _handleLick(delta):
 	if(licked_on):
@@ -127,11 +114,7 @@ func _jump(mouse_position):
 	jump_velocity.x = (-relative_h_magnitude) * horizontal_jump_force
 	jump_velocity.y = (-relative_v_magnitude) * vertical_jump_force
 	linear_velocity = jump_velocity
-	
-	#anim
-	anim_player.play("Jump-start")
-	playing = "Jump-start"
-	prevY = position.y
+	jumping.emit()
 	
 
 func _jumpAllowed():
