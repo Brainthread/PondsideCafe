@@ -7,7 +7,11 @@ var playing
 var prevY
 var in_water
 var landing_bleh 
+@onready var audio = get_node("../AudioStreamPlayer2D")
 
+var jump_sound = load("res://Audio/Jump.wav")
+var land_sound = load("res://Audio/Land.mp3")
+var splash_sound = load("res://Audio/Waterdip.wav")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,7 +40,11 @@ func _eval_anim():
 		landing_bleh = false
 		if in_water:
 			play("Dive")
+			audio.stream = splash_sound
+			audio.play()
 		else:
+			audio.stream = land_sound
+			audio.play()
 			play("Land")
 
 func _on_frog_anim_animation_finished():
@@ -50,8 +58,12 @@ func _on_frog_anim_animation_finished():
 func _on_jump():
 	if(in_water):
 		play("Exit-Swim")
+		audio.stream = jump_sound
+		audio.play()
 	else:
 		play("Jump-start")
+		audio.stream = jump_sound
+		audio.play()
 	prevY = frog.position.y
 	
 func _on_lick_start():

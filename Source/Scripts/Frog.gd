@@ -160,3 +160,6 @@ func _on_water_area_exited(area):
 
 func _on_water_area_entered(area):
 	enter_water.emit()
+	var splash = load("res://Scenes/Objects/splash_generator.tscn").instantiate()
+	add_child(splash)
+	splash.setup(2)

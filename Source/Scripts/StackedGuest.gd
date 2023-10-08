@@ -1,6 +1,12 @@
 extends Node2D
 
 @onready var guestScene = preload("res://Scenes/Objects/guest.tscn")
+@onready var audio = get_node("AudioStreamPlayer2D")
+
+var eat = load("res://Audio/eat.wav")
+var customer_hates = load("res://Audio/Customer_hates.wav")
+var customer_likeys = load("res://Audio/Customer_likeys.wav")
+
 var guestList = []
 var insectList = ["Worm", "Fly", "Cricket"]
 var requestList = ["Leaf", "Blueberry", "Shroom"]
@@ -47,15 +53,21 @@ func remove_guest(food):
 	if satisfiedCustomer != null:
 		get_node("../../Café").increse_score(20)
 		remove_from_list(satisfiedCustomer)
+		audio.stream = customer_likeys
 	satisfying = false
+	audio.play()
 
 func remove_dissatisfied_guest(guest):
+	audio.stream = eat
+	audio.play()
 	while satisfying:
 		await get_tree().create_timer(0.1).timeout
 	satisfying = true
 	var dissatisfiedCustomer = guestList.find(guest)
 	remove_from_list(dissatisfiedCustomer)
 	satisfying = false
+	audio.stream = customer_hates
+	audio.play()
 
 func remove_from_list(guest_no):
 	guestList[guest_no].satisfy()
@@ -63,6 +75,7 @@ func remove_from_list(guest_no):
 	guestList[guest_no].kill()
 	guestList.remove_at(guest_no)
 	reorder_guests()
+
 
 func spawn_timer():
 	waiting = true

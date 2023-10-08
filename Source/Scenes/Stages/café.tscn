@@ -133,6 +133,8 @@ vertical_jump_force = 500
 position = Vector2(-222, 98)
 script = ExtResource("3_3r3w5")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="StackedGuest"]
+
 [node name="Statics" type="Node2D" parent="."]
 
 [node name="Branches" type="StaticBody2D" parent="Statics"]
