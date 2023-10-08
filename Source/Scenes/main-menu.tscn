@@ -1,0 +1,165 @@
+[gd_scene load_steps=13 format=3 uid="uid://b1ji7sl0gu5wq"]
+
+[ext_resource type="Texture2D" uid="uid://bafk7f38ghpdo" path="res://UI/temp-bg.png" id="1_aym6m"]
+[ext_resource type="Texture2D" uid="uid://bfmgnh1x3557j" path="res://UI/Title.png" id="2_3bs50"]
+[ext_resource type="Texture2D" uid="uid://dn27msejb4quh" path="res://UI/New Game.png" id="3_w5b5y"]
+[ext_resource type="Script" path="res://Scripts/Start.gd" id="4_ol8q1"]
+[ext_resource type="Texture2D" uid="uid://bcxvihkrch87d" path="res://UI/New Game Pres.png" id="4_s7c18"]
+[ext_resource type="Texture2D" uid="uid://cb2pv77gfndg" path="res://UI/Credits.png" id="5_gmmw3"]
+[ext_resource type="Texture2D" uid="uid://j6jge7nr4nbu" path="res://UI/New Game Hovered.png" id="5_yh8fp"]
+[ext_resource type="Texture2D" uid="uid://7k8gbrnws5xk" path="res://UI/Ver.png" id="6_lhlrg"]
+[ext_resource type="Texture2D" uid="uid://pt6nw3qg56c1" path="res://UI/Illustration.png" id="7_bixm8"]
+[ext_resource type="Texture2D" uid="uid://bekbyecuwfylf" path="res://UI/Credits Pressed.png" id="8_a5b01"]
+[ext_resource type="Texture2D" uid="uid://jtu5s4m7tuhi" path="res://UI/Credit Hovered.png" id="9_g2xak"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c61i2"]
+bg_color = Color(0.788235, 0.643137, 0.333333, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.196078)
+shadow_size = 2
+shadow_offset = Vector2(4, 0)
+
+[node name="Node" type="Node"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_aym6m")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("4_ol8q1")
+
+[node name="Main" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Menu" type="MarginContainer" parent="CanvasLayer/Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 1116.0
+offset_bottom = 612.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 120
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Main/Menu"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main/Menu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Title" type="TextureRect" parent="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 120)
+layout_mode = 2
+texture = ExtResource("2_3bs50")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="New Game" type="TextureButton" parent="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_w5b5y")
+texture_pressed = ExtResource("4_s7c18")
+texture_hover = ExtResource("5_yh8fp")
+
+[node name="Credit" type="TextureButton" parent="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_gmmw3")
+texture_pressed = ExtResource("8_a5b01")
+texture_hover = ExtResource("9_g2xak")
+
+[node name="Info" type="TextureRect" parent="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_lhlrg")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Main/Menu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="Illustration" type="TextureRect" parent="CanvasLayer/Main/Menu/HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("7_bixm8")
+
+[node name="Credits" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -84.0
+offset_right = -76.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Credits"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Credits/CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c61i2")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Credits/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Credits/CenterContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Credits/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_gmmw3")
+
+[node name="1" type="Label" parent="CanvasLayer/Credits/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+text = "Brainthread
+"
+
+[node name="2" type="Label" parent="CanvasLayer/Credits/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+
+[node name="3" type="Label" parent="CanvasLayer/Credits/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+
+[connection signal="pressed" from="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer/VBoxContainer/New Game" to="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer/VBoxContainer/New Game" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer/VBoxContainer/New Game" to="CanvasLayer" method="_on_new_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer/VBoxContainer/Credit" to="CanvasLayer" method="_on_credit_pressed"]

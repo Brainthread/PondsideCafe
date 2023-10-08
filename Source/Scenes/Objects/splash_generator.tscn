@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bmr3li2da8th0"]
 
-[ext_resource type="Script" path="res://Scenes/Stages/SplashGenerator.gd" id="1_sak83"]
+[ext_resource type="Script" path="res://Scripts/SplashGenerator.gd" id="1_sak83"]
 
 [node name="SplashGenerator" type="Node2D"]
 script = ExtResource("1_sak83")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpi0wadxllogq"
-path="res://.godot/imported/Shroom-32.png-a55079ab607fc156752a2f302217bbe8.ctex"
+uid="uid://jtu5s4m7tuhi"
+path="res://.godot/imported/Credit Hovered.png-6933978c18733042804ff1ef06f90aff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Shroom-32.png"
-dest_files=["res://.godot/imported/Shroom-32.png-a55079ab607fc156752a2f302217bbe8.ctex"]
+source_file="res://UI/Credit Hovered.png"
+dest_files=["res://.godot/imported/Credit Hovered.png-6933978c18733042804ff1ef06f90aff.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpi0wadxllogq"
-path="res://.godot/imported/Shroom-32.png-a55079ab607fc156752a2f302217bbe8.ctex"
+uid="uid://dn27msejb4quh"
+path="res://.godot/imported/New Game.png-0a3e06431d64f557c5a0d7776a4b7d61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Shroom-32.png"
-dest_files=["res://.godot/imported/Shroom-32.png-a55079ab607fc156752a2f302217bbe8.ctex"]
+source_file="res://UI/New Game.png"
+dest_files=["res://.godot/imported/New Game.png-0a3e06431d64f557c5a0d7776a4b7d61.ctex"]
 
 [params]
 

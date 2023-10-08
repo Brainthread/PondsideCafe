@@ -50,6 +50,9 @@ func _set_foodtype(my_type):
 func _get_licked():
 	freeze = false;
 
+func get_food_name():
+	return my_foodtype_string
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var scaleVector = scale + Vector2(delta, delta) * growthFactor

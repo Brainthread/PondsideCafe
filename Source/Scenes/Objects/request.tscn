@@ -1,12 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://cq02c1wcq74aj"]
 
 [ext_resource type="Script" path="res://Scripts/Request.gd" id="1_03of1"]
-[ext_resource type="Texture2D" uid="uid://btuxk0u1be2pr" path="res://Sprites/Speech.png" id="2_7xq4d"]
+[ext_resource type="SpriteFrames" uid="uid://c5o7ox5sjwn15" path="res://Sprites/animation/speech.res" id="2_7nq33"]
 
 [node name="Request" type="Node2D"]
 script = ExtResource("1_03of1")
 
-[node name="SpeechBubble" type="Sprite2D" parent="."]
-texture = ExtResource("2_7xq4d")
-
 [node name="Order" type="Sprite2D" parent="."]
+
+[node name="SpeechBubble" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = ExtResource("2_7nq33")
+animation = &"Pop"
+autoplay = "Default"
+frame = 7
+frame_progress = 1.0
