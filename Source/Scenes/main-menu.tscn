@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b1ji7sl0gu5wq"]
+[gd_scene load_steps=20 format=3 uid="uid://b1ji7sl0gu5wq"]
 
 [ext_resource type="Texture2D" uid="uid://bafk7f38ghpdo" path="res://UI/temp-bg.png" id="1_aym6m"]
 [ext_resource type="Texture2D" uid="uid://bfmgnh1x3557j" path="res://UI/Title.png" id="2_3bs50"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://pt6nw3qg56c1" path="res://UI/Illustration.png" id="7_bixm8"]
 [ext_resource type="Texture2D" uid="uid://bekbyecuwfylf" path="res://UI/Credits Pressed.png" id="8_a5b01"]
 [ext_resource type="Texture2D" uid="uid://jtu5s4m7tuhi" path="res://UI/Credit Hovered.png" id="9_g2xak"]
+[ext_resource type="FontFile" uid="uid://cs60obrthdjuv" path="res://UI/ARLRDBD.TTF" id="12_23xfj"]
+[ext_resource type="Texture2D" uid="uid://br227ysc3rhmg" path="res://UI/Return.png" id="12_i6ud3"]
+[ext_resource type="Texture2D" uid="uid://dkckoip0xv2px" path="res://UI/Return Pressed.png" id="13_8c64v"]
+[ext_resource type="Texture2D" uid="uid://eygavxhawqam" path="res://UI/Return Hovered.png" id="14_lm5gu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c61i2"]
 bg_color = Color(0.788235, 0.643137, 0.333333, 1)
@@ -21,6 +25,39 @@ corner_radius_bottom_left = 8
 shadow_color = Color(0, 0, 0, 0.196078)
 shadow_size = 2
 shadow_offset = Vector2(4, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uba6h"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.580392, 0.415686, 0.184314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3roaw"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.580392, 0.415686, 0.184314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3o2r"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.580392, 0.415686, 0.184314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="Node" type="Node"]
 
@@ -112,10 +149,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -76.0
-offset_top = -84.0
-offset_right = -76.0
-offset_bottom = -84.0
+offset_left = -161.0
+offset_top = -164.0
+offset_right = -161.0
+offset_bottom = -164.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -138,28 +175,46 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Credits/CenterContainer/PanelContainer/MarginContainer"]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
-theme_override_constants/separation = 2
+theme_override_constants/separation = 8
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Credits/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 texture = ExtResource("5_gmmw3")
 
 [node name="1" type="Label" parent="CanvasLayer/Credits/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 7
-text = "Brainthread
-"
+theme_override_fonts/font = ExtResource("12_23xfj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uba6h")
+text = "Brainthread - Lead Programmer,
+Food provider, Sound"
 
 [node name="2" type="Label" parent="CanvasLayer/Credits/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("12_23xfj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3roaw")
+text = "Fetaost - Lead Programmer, 
+Background, Sound"
 
 [node name="3" type="Label" parent="CanvasLayer/Credits/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("12_23xfj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n3o2r")
+text = "ziyi - Programmer, UI, Sprites"
 
-[connection signal="pressed" from="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer/VBoxContainer/New Game" to="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer/VBoxContainer/New Game" method="_on_pressed"]
+[node name="return" type="TextureButton" parent="CanvasLayer/Credits/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("12_i6ud3")
+texture_pressed = ExtResource("13_8c64v")
+texture_hover = ExtResource("14_lm5gu")
+
 [connection signal="pressed" from="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer/VBoxContainer/New Game" to="CanvasLayer" method="_on_new_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer/VBoxContainer/New Game" to="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer/VBoxContainer/New Game" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/Menu/HBoxContainer/VBoxContainer/VBoxContainer/Credit" to="CanvasLayer" method="_on_credit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Credits/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/return" to="CanvasLayer" method="_on_return_pressed"]
