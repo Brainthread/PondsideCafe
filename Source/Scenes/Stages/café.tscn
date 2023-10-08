@@ -5,20 +5,27 @@
 [ext_resource type="Script" path="res://Scripts/StackedGuest.gd" id="3_3r3w5"]
 [ext_resource type="Texture2D" uid="uid://bl5amlhuur1sg" path="res://Sprites/Signage.png" id="4_0npfx"]
 [ext_resource type="Texture2D" uid="uid://x1h4dp8xej62" path="res://Sprites/tree_background.png" id="4_0173w"]
-[ext_resource type="Texture2D" uid="uid://u8agb452f676" path="res://Sprites/background_grass.png" id="5_nyeye"]
-[ext_resource type="Texture2D" uid="uid://vai0eqiocyku" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
+
+[ext_resource type="Texture2D" uid="uid://cx7wcvrllysx6" path="res://Sprites/background_grass.png" id="5_nyeye"]
+[ext_resource type="Texture2D" uid="uid://bl5amlhuur1sg" path="res://Sprites/aseprite/Signage.png" id="6_alpm4"]
+[ext_resource type="Texture2D" uid="uid://c41olgvnwcj8p" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
+
 [ext_resource type="Texture2D" uid="uid://ut74mfwxgre7" path="res://Sprites/bord.png" id="6_iomv4"]
 [ext_resource type="Texture2D" uid="uid://bw4av76i0pj5o" path="res://Sprites/pall.png" id="7_u4wul"]
-[ext_resource type="Texture2D" uid="uid://bbayiev3h0i1h" path="res://icon.svg" id="9_cjjxi"]
 [ext_resource type="Texture2D" uid="uid://vu52ovjcybfe" path="res://Sprites/tree_foreground.png" id="10_krs84"]
+[ext_resource type="Script" path="res://Scenes/Stages/Foodstuff.gd" id="11_303xo"]
+[ext_resource type="Texture2D" uid="uid://dce3f8ybvndok" path="res://Sprites/shroom.png" id="12_75jnd"]
 
 [sub_resource type="TileSet" id="TileSet_03jer"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlbuq"]
-size = Vector2(309, 34.5)
+size = Vector2(309, 32.25)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_550cl"]
-radius = 20.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5hac"]
+size = Vector2(201, 472)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sp5jg"]
+size = Vector2(23.2864, 65.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8cl7j"]
 size = Vector2(121.384, 336.5)
@@ -27,7 +34,10 @@ size = Vector2(121.384, 336.5)
 size = Vector2(1539.06, 75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uq5uy"]
-size = Vector2(37, 37)
+size = Vector2(18, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_550cl"]
+radius = 35.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ew80o"]
 size = Vector2(649, 20)
@@ -44,11 +54,12 @@ format = 2
 
 [node name="Frog" parent="." instance=ExtResource("1_oa0m2")]
 position = Vector2(-242, -30)
-collision_mask = 7
+collision_mask = 39
 
 [node name="StackedGuest" type="Node2D" parent="."]
 position = Vector2(-222, 98)
 script = ExtResource("3_3r3w5")
+
 
 [node name="Background" type="StaticBody2D" parent="."]
 position = Vector2(93, -34)
@@ -137,7 +148,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Statics/Background"]
-position = Vector2(318.93, 183)
+position = Vector2(318.93, 184.125)
 scale = Vector2(6.12139, 1)
 shape = SubResource("RectangleShape2D_vlbuq")
 one_way_collision = true
@@ -166,41 +177,61 @@ z_index = -7
 scale = Vector2(1.28601, 1)
 texture = ExtResource("4_0173w")
 
-[node name="WallRight" type="CollisionShape2D" parent="Statics/Background"]
-position = Vector2(859.052, 25)
-shape = SubResource("RectangleShape2D_8cl7j")
 
-[node name="WallLeft" type="CollisionShape2D" parent="Statics/Background"]
-position = Vector2(-581.524, 25.75)
-shape = SubResource("RectangleShape2D_8cl7j")
+[node name="Border of life" type="Node2D" parent="Statics"]
 
-[node name="Roof" type="CollisionShape2D" parent="Statics/Background"]
-position = Vector2(151.25, -180.5)
-shape = SubResource("RectangleShape2D_26j1x")
+[node name="StaticBody2D3" type="StaticBody2D" parent="Statics/Border of life"]
+position = Vector2(1226, 0)
+collision_layer = 33
+collision_mask = 33
 
-[node name="Dragable" type="RigidBody2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Statics/Border of life/StaticBody2D3"]
+position = Vector2(-412, 44)
+shape = SubResource("RectangleShape2D_t5hac")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Statics/Border of life"]
+collision_layer = 33
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Statics/Border of life/StaticBody2D2"]
+position = Vector2(-412, 44)
+shape = SubResource("RectangleShape2D_t5hac")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Statics/Border of life"]
+collision_layer = 33
+collision_mask = 33
+
+[node name="Border" type="CollisionShape2D" parent="Statics/Border of life/StaticBody2D"]
+position = Vector2(198.9, -149.75)
+scale = Vector2(58.24, 1)
+shape = SubResource("RectangleShape2D_sp5jg")
+
+[node name="Dragable" type="RigidBody2D" parent="." groups=["Draggables"]]
+
 position = Vector2(19, 50)
 collision_layer = 8
-collision_mask = 10
-mass = 53.27
+collision_mask = 58
 gravity_scale = 0.5
+script = ExtResource("11_303xo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dragable"]
-position = Vector2(0.5, 0.5)
+scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_uq5uy")
 
 [node name="Sprite2D" type="Sprite2D" parent="Dragable"]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("9_cjjxi")
+scale = Vector2(3, 3)
+texture = ExtResource("12_75jnd")
 
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="Furniture" type="Area2D" parent="Areas"]
 position = Vector2(-136, 108)
+collision_layer = 16
+collision_mask = 8
 
 [node name="Table" type="Sprite2D" parent="Areas/Furniture"]
 z_index = -1
-position = Vector2(-51, 1)
+position = Vector2(-50, 1)
 texture = ExtResource("6_iomv4")
 
 [node name="Chair" type="Sprite2D" parent="Areas/Furniture"]
@@ -209,14 +240,19 @@ position = Vector2(-86, 0)
 texture = ExtResource("7_u4wul")
 
 [node name="PlateRange" type="CollisionShape2D" parent="Areas/Furniture"]
-position = Vector2(-51, -11)
+position = Vector2(-50, -11)
 shape = SubResource("CircleShape2D_550cl")
 
 [node name="Water" type="Area2D" parent="Areas"]
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Water"]
 position = Vector2(375.5, 132)
 shape = SubResource("RectangleShape2D_ew80o")
+
+[node name="Signage" type="Sprite2D" parent="."]
+position = Vector2(-293, 97)
+texture = ExtResource("6_alpm4")
 
 [connection signal="area_entered" from="Areas/Water" to="Frog" method="_on_water_area_entered"]
 [connection signal="area_exited" from="Areas/Water" to="Frog" method="_on_water_area_exited"]

@@ -48,6 +48,8 @@ delete={
 2d_physics/layer_2="Ground"
 2d_physics/layer_3="Lickable"
 2d_physics/layer_4="Grabable"
+2d_physics/layer_5="Table"
+2d_physics/layer_6="Border"
 
 [rendering]
 
