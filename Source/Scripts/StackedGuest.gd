@@ -65,3 +65,8 @@ func _process(delta):
 	if !waiting && guestList.size() < guestCap && !satisfying:
 		spawn_timer()
 	pass
+
+func _on_furniture_body_entered(body):
+	var food = body.get_food_name()
+	if food == "Blueberry" || food == "Shroom" || food == "Leaf":
+		remove_guest(food)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://br67t6ca1tg"]
+[gd_scene load_steps=23 format=3 uid="uid://br67t6ca1tg"]
 
 [ext_resource type="Script" path="res://Scripts/SceneCam.gd" id="1_33sim"]
 [ext_resource type="PackedScene" uid="uid://kd7uxyh1weri" path="res://Scenes/Objects/frog.tscn" id="1_oa0m2"]
@@ -30,6 +30,19 @@ size = Vector2(363, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8664n"]
 size = Vector2(80, 12)
+
+[sub_resource type="GDScript" id="GDScript_l0b5r"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_550cl"]
 radius = 35.0
@@ -230,6 +243,7 @@ texture = ExtResource("9_2aqs3")
 position = Vector2(-136, 108)
 collision_layer = 16
 collision_mask = 8
+script = SubResource("GDScript_l0b5r")
 
 [node name="Table" type="Sprite2D" parent="Areas/Furniture"]
 z_index = -1
@@ -261,5 +275,7 @@ z_index = -1
 position = Vector2(428, -89)
 texture = ExtResource("13_30sri")
 
+[connection signal="area_entered" from="Areas/Furniture" to="StackedGuest" method="_on_furniture_area_entered"]
+[connection signal="body_entered" from="Areas/Furniture" to="StackedGuest" method="_on_furniture_body_entered"]
 [connection signal="area_entered" from="Areas/Water" to="Frog" method="_on_water_area_entered"]
 [connection signal="area_exited" from="Areas/Water" to="Frog" method="_on_water_area_exited"]
