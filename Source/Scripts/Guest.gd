@@ -13,15 +13,18 @@ func setup(insect, request):
 	requestNode = requestScene.instantiate()
 	insectType = insect
 	requestType = request
-	print("hi2")
 	
 	requestNode.setup(requestType)
-	requestNode.position.x -= 40
+	requestNode.position.x -= 30
 	add_child(requestNode)
 	
 	anim.play(insect)
 
+func get_request():
+	return requestType
+
 func kill():
+	print("ah")
 	queue_free() #:(
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
