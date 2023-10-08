@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1ji7sl0gu5wq"]
+
+[ext_resource type="Texture2D" uid="uid://bafk7f38ghpdo" path="res://UI/temp-bg.png" id="1_aym6m"]
+[ext_resource type="Texture2D" uid="uid://bfmgnh1x3557j" path="res://UI/Title.png" id="2_3bs50"]
+[ext_resource type="Texture2D" uid="uid://dn27msejb4quh" path="res://UI/New Game.png" id="3_w5b5y"]
+[ext_resource type="Script" path="res://Scripts/Start.gd" id="4_ol8q1"]
+[ext_resource type="Texture2D" uid="uid://bcxvihkrch87d" path="res://UI/New Game Pres.png" id="4_s7c18"]
+[ext_resource type="Texture2D" uid="uid://cb2pv77gfndg" path="res://UI/Credits.png" id="5_gmmw3"]
+[ext_resource type="Texture2D" uid="uid://j6jge7nr4nbu" path="res://UI/New Game Hovered.png" id="5_yh8fp"]
+[ext_resource type="Texture2D" uid="uid://7k8gbrnws5xk" path="res://UI/Ver.png" id="6_lhlrg"]
+[ext_resource type="Texture2D" uid="uid://pt6nw3qg56c1" path="res://UI/Illustration.png" id="7_bixm8"]
+
+[node name="Node" type="Node"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_aym6m")
+
+[node name="Menu" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 120
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Title" type="TextureRect" parent="Menu/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 120)
+layout_mode = 2
+texture = ExtResource("2_3bs50")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="New Game" type="TextureButton" parent="Menu/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_w5b5y")
+texture_pressed = ExtResource("4_s7c18")
+texture_hover = ExtResource("5_yh8fp")
+script = ExtResource("4_ol8q1")
+
+[node name="Credits" type="TextureRect" parent="Menu/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_gmmw3")
+
+[node name="Info" type="TextureRect" parent="Menu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_lhlrg")
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="Illustration" type="TextureRect" parent="Menu/HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("7_bixm8")
+
+[connection signal="pressed" from="Menu/HBoxContainer/VBoxContainer/VBoxContainer/New Game" to="Menu/HBoxContainer/VBoxContainer/VBoxContainer/New Game" method="_on_pressed"]
