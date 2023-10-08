@@ -19,9 +19,12 @@ var tongue_position = Vector2(0,0)
 var tongueLine  
 var ground_ray
 var ground_zone
+var direction = -1
 
 #Animation
 signal jumping
+signal lick_start
+signal lick_end
 
 
 # Called when the node enters the scene tree for the first time.
@@ -45,10 +48,11 @@ func _handleLick(delta):
 			lick_target = lick_drag_node.position
 		var relative_position = lick_target - position
 		tongueLine.points[1] = tongue_position
+		tongueLine.points[0] = Vector2(12*direction, 2)
 		lick_target_interpolation += delta*tongue_speed/lick_target_distance
 		if(lick_target_interpolation > 1):
 			lick_target_interpolation = 1
-		tongue_position = lerp(Vector2(12, 2), lick_target-position, lick_target_interpolation)
+		tongue_position = lerp(Vector2(12*direction, 2), lick_target-position, lick_target_interpolation)
 		lick_area.position = tongue_position
 		_handle_lick_collision(delta)
 		if target_lick_type == 1:
@@ -90,6 +94,12 @@ func _handle_lick_collision(delta):
 
 func _handleInput(delta):
 	var mouse_position = get_global_mouse_position()
+	if((mouse_position - position).x < 0):
+		get_node( "FrogAnim" ).set_flip_h(true)
+		direction = -1
+	if((mouse_position - position).x > 0):
+		get_node( "FrogAnim" ).set_flip_h(false)
+		direction = 1
 	var jumpAllowed = _jumpAllowed();
 	if(Input.is_action_just_pressed("jump")&&jumpAllowed):
 		_jump(mouse_position)
@@ -102,12 +112,14 @@ func _lick(mouse_position):
 	if(licked_on):
 		_reset_lick()
 		return
+	lick_start.emit()
 	var target_direction = (mouse_position - position).normalized()
 	lick_target = mouse_position + target_direction*64
 	lick_target_distance = (mouse_position - position).length()
 	licked_on = true
 
 func _reset_lick():
+	lick_end.emit()
 	lick_drag_node = null
 	target_lick_type = 0
 	licked_on = false
