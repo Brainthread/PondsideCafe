@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl5amlhuur1sg"
-path="res://.godot/imported/Signage.png-24553b9f5d2a86a651ad27abfc00d32e.ctex"
+uid="uid://puqecnt47vqu"
+path="res://.godot/imported/Blueberry.png-ec9acdda3b49f46f772aee70091d0e2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/aseprite/Signage.png"
-dest_files=["res://.godot/imported/Signage.png-24553b9f5d2a86a651ad27abfc00d32e.ctex"]
+source_file="res://Sprites/Blueberry.png"
+dest_files=["res://.godot/imported/Blueberry.png-ec9acdda3b49f46f772aee70091d0e2d.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctactxxkywlg8"
-path="res://.godot/imported/Leaf.png-7fa340ceecc22d264b241ad8ae443c31.ctex"
+path="res://.godot/imported/Leaf.png-cc905a08367c3bca65e4a098f0181028.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/aseprite/Leaf.png"
-dest_files=["res://.godot/imported/Leaf.png-7fa340ceecc22d264b241ad8ae443c31.ctex"]
+source_file="res://Sprites/Leaf.png"
+dest_files=["res://.godot/imported/Leaf.png-cc905a08367c3bca65e4a098f0181028.ctex"]
 
 [params]
 
