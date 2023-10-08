@@ -1,13 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://br67t6ca1tg"]
+[gd_scene load_steps=27 format=3 uid="uid://br67t6ca1tg"]
 
 [ext_resource type="Script" path="res://Scripts/SceneCam.gd" id="1_33sim"]
 [ext_resource type="Script" path="res://Scenes/Stages/GameManager.gd" id="1_epq12"]
 [ext_resource type="PackedScene" uid="uid://kd7uxyh1weri" path="res://Scenes/Objects/frog.tscn" id="1_oa0m2"]
 [ext_resource type="Script" path="res://Scripts/StackedGuest.gd" id="3_3r3w5"]
+[ext_resource type="Texture2D" uid="uid://cxvs0ng2pfi7g" path="res://Sprites/Clock.png" id="3_la4x3"]
 [ext_resource type="Texture2D" uid="uid://x1h4dp8xej62" path="res://Sprites/tree_background.png" id="4_0173w"]
-[ext_resource type="Texture2D" uid="uid://u8agb452f676" path="res://Sprites/background_grass.png" id="5_nyeye"]
+[ext_resource type="Texture2D" uid="uid://cx7wcvrllysx6" path="res://Sprites/background_grass.png" id="5_nyeye"]
 [ext_resource type="Texture2D" uid="uid://bl5amlhuur1sg" path="res://Sprites/Signage.png" id="6_alpm4"]
-[ext_resource type="Texture2D" uid="uid://vai0eqiocyku" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
+[ext_resource type="Texture2D" uid="uid://c41olgvnwcj8p" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
 [ext_resource type="Texture2D" uid="uid://ut74mfwxgre7" path="res://Sprites/bord.png" id="6_iomv4"]
 [ext_resource type="Texture2D" uid="uid://bw4av76i0pj5o" path="res://Sprites/pall.png" id="7_u4wul"]
 [ext_resource type="Texture2D" uid="uid://digoa1t75bru" path="res://Sprites/aseprite/Lilypad.png" id="9_2aqs3"]
@@ -63,27 +64,56 @@ metadata/_edit_vertical_guides_ = [649.0]
 zoom = Vector2(1.85, 1.85)
 script = ExtResource("1_33sim")
 
-[node name="Label" type="Label" parent="SceneCam"]
+[node name="Time" type="Label" parent="SceneCam"]
 texture_filter = 1
 texture_repeat = 1
-offset_left = -37.0
-offset_top = -151.0
-offset_right = 38.0
-offset_bottom = -125.0
+offset_left = -24.0
+offset_top = -170.0
+offset_right = 51.0
+offset_bottom = -144.0
 text = "60"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="SceneCam"]
+[node name="Score" type="Label" parent="SceneCam"]
 texture_filter = 1
 texture_repeat = 1
-offset_left = -74.0
-offset_top = -302.0
-offset_right = 1.0
-offset_bottom = -276.0
-text = "60"
+offset_left = -256.0
+offset_top = -176.0
+offset_right = -181.0
+offset_bottom = -150.0
+text = "0
+"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GameOver" type="Label" parent="SceneCam"]
+texture_filter = 1
+texture_repeat = 1
+offset_left = -43.0
+offset_top = -67.0
+offset_right = 46.0
+offset_bottom = -41.0
+text = "Game over!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOver" type="Label" parent="SceneCam/GameOver"]
+texture_filter = 1
+texture_repeat = 1
+offset_left = -71.0
+offset_top = 41.0
+offset_right = 161.0
+offset_bottom = 67.0
+text = "Final score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Clock" type="Sprite2D" parent="SceneCam"]
+z_index = 10
+position = Vector2(-17, -159)
+texture = ExtResource("3_la4x3")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_03jer")
@@ -119,7 +149,6 @@ polygon = PackedVector2Array(149, -177, 160, -168, 172, -160, 180, -157, 214, -1
 [node name="ForegroundGrass" type="Sprite2D" parent="Statics"]
 z_index = 10
 position = Vector2(199, -1)
-scale = Vector2(1, 1)
 texture = ExtResource("6_c7n0r")
 
 [node name="Background" type="StaticBody2D" parent="Statics"]
@@ -311,17 +340,14 @@ shape = SubResource("RectangleShape2D_ew80o")
 
 [node name="FoodSpawnManager" type="Node2D" parent="."]
 script = ExtResource("14_52emm")
-
 berrySpawnArea = Vector4(389, 468, -108, -51)
 leafSpawnArea = Vector4(0, 640, -175, -80)
 shroomSpawnArea = Vector4(326, 396, 86, 117)
-
 
 [node name="Bush" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(428, -89)
 texture = ExtResource("13_30sri")
-
 
 [connection signal="area_entered" from="Areas/Furniture" to="StackedGuest" method="_on_furniture_area_entered"]
 [connection signal="body_entered" from="Areas/Furniture" to="StackedGuest" method="_on_furniture_body_entered"]
