@@ -22,9 +22,11 @@ point_count = 1
 
 [node name="Frog" type="RigidBody2D"]
 position = Vector2(-228, -35)
-gravity_scale = 0.8
+gravity_scale = 0.5
 lock_rotation = true
 script = ExtResource("1_kq0gs")
+full_mouse_distance = 175
+tongue_speed = 500
 
 [node name="FrogAnim" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_2tf0k")
