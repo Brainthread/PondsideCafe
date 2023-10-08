@@ -55,6 +55,7 @@ shape = SubResource("RectangleShape2D_cn3px")
 points = PackedVector2Array(12, 2, 0, 0)
 width = 4.0
 width_curve = SubResource("Curve_dwvrv")
+default_color = Color(0.756863, 0.0823529, 0.309804, 1)
 
 [node name="LickCheck" type="Area2D" parent="."]
 scale = Vector2(0.3, 0.3)
