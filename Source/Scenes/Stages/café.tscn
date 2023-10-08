@@ -1,12 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://br67t6ca1tg"]
+[gd_scene load_steps=17 format=3 uid="uid://br67t6ca1tg"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/SceneCam.gd" id="1_nom56"]
 [ext_resource type="PackedScene" uid="uid://kd7uxyh1weri" path="res://Scenes/Objects/frog.tscn" id="1_oa0m2"]
 [ext_resource type="Script" path="res://Scripts/StackedGuest.gd" id="3_3r3w5"]
 [ext_resource type="Texture2D" uid="uid://x1h4dp8xej62" path="res://Sprites/tree_background.png" id="4_0173w"]
-[ext_resource type="Texture2D" uid="uid://cvyfq3nrr7csk" path="res://Sprites/background_grass.png" id="5_nyeye"]
+[ext_resource type="Texture2D" uid="uid://u8agb452f676" path="res://Sprites/background_grass.png" id="5_nyeye"]
 [ext_resource type="Texture2D" uid="uid://bl5amlhuur1sg" path="res://Sprites/aseprite/Signage.png" id="6_alpm4"]
-[ext_resource type="Texture2D" uid="uid://blherx8i8sb0u" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
+[ext_resource type="Texture2D" uid="uid://vai0eqiocyku" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
 [ext_resource type="Texture2D" uid="uid://ut74mfwxgre7" path="res://Sprites/bord.png" id="6_iomv4"]
 [ext_resource type="Texture2D" uid="uid://bw4av76i0pj5o" path="res://Sprites/pall.png" id="7_u4wul"]
 [ext_resource type="Texture2D" uid="uid://bbayiev3h0i1h" path="res://icon.svg" id="9_cjjxi"]
@@ -22,6 +22,9 @@ radius = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uq5uy"]
 size = Vector2(37, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ew80o"]
+size = Vector2(649, 20)
 
 [node name="Café" type="Node2D"]
 
@@ -117,6 +120,42 @@ texture = ExtResource("10_krs84")
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Statics/Branches"]
 polygon = PackedVector2Array(149, -177, 160, -168, 172, -160, 180, -157, 214, -134, 221, -132, 239, -120, 240, -116, 247, -113, 251, -114, 264, -111, 282, -113, 286, -110, 309, -120, 326, -126, 365, -132, 368, -130, 380, -130, 382, -133, 386, -131, 394, -134, 409, -134, 449, -134, 459, -131, 474, -129, 483, -131, 497, -129, 523, -129, 538, -128, 559, -127, 549, -118, 537, -106, 515, -106, 497, -106, 493, -102, 480, -100, 458, -108, 454, -105, 444, -107, 440, -97, 456, -95, 461, -92, 462, -88, 480, -88, 498, -92, 510, -92, 514, -88, 557, -97, 560, -95, 587, -101, 590, -109, 597, -118, 604, -121, 606, -126, 609, -124, 630, -139, 636, -139, 656, -147, 668, -149, 671, -146, 714, -162, 713, -177, 611, -177, 225, -177)
 
+[node name="Background" type="StaticBody2D" parent="Statics"]
+position = Vector2(93, -34)
+scale = Vector2(0.777601, 1)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Statics/Background"]
+position = Vector2(318.93, 183)
+scale = Vector2(6.12139, 1)
+shape = SubResource("RectangleShape2D_vlbuq")
+one_way_collision = true
+
+[node name="BackgroundGrass" type="Sprite2D" parent="Statics/Background"]
+z_index = -6
+position = Vector2(138.889, 35)
+scale = Vector2(1.28601, 1)
+texture = ExtResource("5_nyeye")
+
+[node name="ForegroundGrass" type="Sprite2D" parent="Statics/Background"]
+z_index = 1
+position = Vector2(136.317, 33)
+scale = Vector2(1.28601, 1)
+texture = ExtResource("6_c7n0r")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Statics/Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Statics/Background/ParallaxBackground"]
+position = Vector2(300, 70)
+scale = Vector2(0.777601, 1)
+motion_scale = Vector2(0.6, 0.6)
+
+[node name="TreeBackground" type="Sprite2D" parent="Statics/Background/ParallaxBackground/ParallaxLayer"]
+z_index = -7
+scale = Vector2(1.28601, 1)
+texture = ExtResource("4_0173w")
+
 [node name="Dragable" type="RigidBody2D" parent="."]
 position = Vector2(19, 50)
 collision_layer = 8
@@ -131,3 +170,31 @@ shape = SubResource("RectangleShape2D_uq5uy")
 [node name="Sprite2D" type="Sprite2D" parent="Dragable"]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_cjjxi")
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="Furniture" type="Area2D" parent="Areas"]
+position = Vector2(-136, 108)
+
+[node name="Table" type="Sprite2D" parent="Areas/Furniture"]
+z_index = -1
+position = Vector2(-51, 1)
+texture = ExtResource("6_iomv4")
+
+[node name="Chair" type="Sprite2D" parent="Areas/Furniture"]
+z_index = -2
+position = Vector2(-86, 0)
+texture = ExtResource("7_u4wul")
+
+[node name="PlateRange" type="CollisionShape2D" parent="Areas/Furniture"]
+position = Vector2(-51, -11)
+shape = SubResource("CircleShape2D_550cl")
+
+[node name="Water" type="Area2D" parent="Areas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Water"]
+position = Vector2(375.5, 132)
+shape = SubResource("RectangleShape2D_ew80o")
+
+[connection signal="area_entered" from="Areas/Water" to="Frog" method="_on_water_area_entered"]
+[connection signal="area_exited" from="Areas/Water" to="Frog" method="_on_water_area_exited"]

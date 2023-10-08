@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Objects/FrogAnim.gd" id="1_4nh6b"]
 [ext_resource type="Script" path="res://Scripts/Frog.gd" id="1_kq0gs"]
-[ext_resource type="SpriteFrames" path="res://Sprites/animation/frog.res" id="2_2tf0k"]
+[ext_resource type="SpriteFrames" uid="uid://caevkpw1qk8tv" path="res://Sprites/animation/frog.res" id="2_2tf0k"]
 [ext_resource type="Script" path="res://Scripts/Groundray.gd" id="3_nsrjf"]
 [ext_resource type="Script" path="res://Scenes/Objects/GroundCheckZone.gd" id="4_ejutv"]
 [ext_resource type="Script" path="res://Scripts/LickCheck.gd" id="6_up6nd"]
@@ -30,7 +30,7 @@ tongue_speed = 500
 
 [node name="FrogAnim" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_2tf0k")
-animation = &"Jump-start"
+animation = &"Dive"
 autoplay = "Idle"
 script = ExtResource("1_4nh6b")
 
@@ -69,7 +69,5 @@ shape = SubResource("CircleShape2D_y4xug")
 [node name="Sprite2D" type="Sprite2D" parent="LickCheck"]
 scale = Vector2(2, 2)
 texture = ExtResource("7_unc7n")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="animation_finished" from="FrogAnim" to="FrogAnim" method="_on_frog_anim_animation_finished"]

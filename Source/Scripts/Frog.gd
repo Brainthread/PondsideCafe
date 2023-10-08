@@ -25,6 +25,9 @@ var direction = -1
 signal jumping
 signal lick_start
 signal lick_end
+signal enter_water
+signal exit_water
+signal drag_start
 
 
 # Called when the node enters the scene tree for the first time.
@@ -34,7 +37,6 @@ func _ready():
 	tongueLine = get_node("Line2D")
 	lick_area = get_node("LickCheck")
 	tongue_position = Vector2(0, 0)
-	
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -91,6 +93,8 @@ func _handle_lick_collision(delta):
 	if(lick_type == 1):
 		print("Lick Draggable")
 		lick_drag_node = lick_area._get_licked_body()
+	if(lick_type == 2):
+		drag_start.emit()
 
 func _handleInput(delta):
 	var mouse_position = get_global_mouse_position()
@@ -148,3 +152,9 @@ func _jumpAllowed():
 	if(ground_zone._is_on_ground()):
 		return true
 	return false
+
+func _on_water_area_exited(area):
+	exit_water.emit()
+
+func _on_water_area_entered(area):
+	enter_water.emit()
