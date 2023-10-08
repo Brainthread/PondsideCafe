@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://br67t6ca1tg"]
+[gd_scene load_steps=29 format=3 uid="uid://br67t6ca1tg"]
 
 [ext_resource type="Script" path="res://Scripts/SceneCam.gd" id="1_33sim"]
 [ext_resource type="Script" path="res://Scenes/Stages/GameManager.gd" id="1_epq12"]
@@ -6,17 +6,18 @@
 [ext_resource type="Script" path="res://Scripts/StackedGuest.gd" id="3_3r3w5"]
 [ext_resource type="Texture2D" uid="uid://cxvs0ng2pfi7g" path="res://Sprites/Clock.png" id="3_la4x3"]
 [ext_resource type="Texture2D" uid="uid://x1h4dp8xej62" path="res://Sprites/tree_background.png" id="4_0173w"]
-[ext_resource type="Texture2D" uid="uid://u8agb452f676" path="res://Sprites/background_grass.png" id="5_nyeye"]
+[ext_resource type="Texture2D" uid="uid://cj5t8ad4eyros" path="res://Sprites/background_grass.png" id="5_nyeye"]
 [ext_resource type="Texture2D" uid="uid://bl5amlhuur1sg" path="res://Sprites/Signage.png" id="6_alpm4"]
-[ext_resource type="Texture2D" uid="uid://vai0eqiocyku" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
+[ext_resource type="Texture2D" uid="uid://cgqapwd3aa4e7" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
 [ext_resource type="Texture2D" uid="uid://ut74mfwxgre7" path="res://Sprites/bord.png" id="6_iomv4"]
 [ext_resource type="Texture2D" uid="uid://bw4av76i0pj5o" path="res://Sprites/pall.png" id="7_u4wul"]
 [ext_resource type="Texture2D" uid="uid://digoa1t75bru" path="res://Sprites/aseprite/Lilypad.png" id="9_2aqs3"]
 [ext_resource type="Texture2D" uid="uid://vu52ovjcybfe" path="res://Sprites/tree_foreground.png" id="10_krs84"]
 [ext_resource type="Texture2D" uid="uid://bohiwo7rgaauv" path="res://Sprites/aseprite/log_2.png" id="12_mp5cp"]
-[ext_resource type="Texture2D" uid="uid://x180th6yiqlr" path="res://Sprites/aseprite/Bush.png" id="13_30sri"]
+[ext_resource type="Texture2D" uid="uid://68vxfvpsiwgs" path="res://Sprites/aseprite/Bush.png" id="13_30sri"]
 [ext_resource type="Script" path="res://Scripts/FoodSpawnManager.gd" id="14_52emm"]
 [ext_resource type="Texture2D" uid="uid://bsbqwek6kegda" path="res://Sprites/Cricket-thumbs.png" id="17_4epky"]
+[ext_resource type="AudioStream" uid="uid://dvi2s3jqhq6hh" path="res://Audio/Froggerton.mp3" id="18_hq3ej"]
 
 [sub_resource type="TileSet" id="TileSet_03jer"]
 
@@ -360,6 +361,10 @@ texture = ExtResource("13_30sri")
 z_index = 10
 position = Vector2(-260, -159)
 texture = ExtResource("17_4epky")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_hq3ej")
+autoplay = true
 
 [connection signal="area_entered" from="Areas/Furniture" to="StackedGuest" method="_on_furniture_area_entered"]
 [connection signal="body_entered" from="Areas/Furniture" to="StackedGuest" method="_on_furniture_body_entered"]
