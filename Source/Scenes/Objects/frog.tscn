@@ -30,7 +30,7 @@ tongue_speed = 500
 
 [node name="FrogAnim" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_2tf0k")
-animation = &"Land"
+animation = &"Jump-start"
 autoplay = "Idle"
 script = ExtResource("1_4nh6b")
 
