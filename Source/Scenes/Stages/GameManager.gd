@@ -10,6 +10,9 @@ func _ready():
 	displayTime = 120
 	displayScoreTime = 10
 	$SceneCam/GameOver.hide()
+	
+func increse_score(i):
+	score += i
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

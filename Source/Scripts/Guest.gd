@@ -46,9 +46,9 @@ func kill():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	timer += delta
-	if timer > 10:
+	if timer > 20:
 		_get_angry()
-	if timer > 16:
+	if timer > 30:
 		_get_pissed()
 		timer = 0
 		inc_timer = false

@@ -45,6 +45,7 @@ func remove_guest(food):
 			satisfiedCustomer = n
 			break
 	if satisfiedCustomer != null:
+		get_node("../../Café").increse_score(20)
 		remove_from_list(satisfiedCustomer)
 	satisfying = false
 
