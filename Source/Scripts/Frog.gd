@@ -4,7 +4,7 @@ extends RigidBody2D
 @export var vertical_jump_force:int = 400
 @export var ground_check_distance:int = 10
 @export var full_mouse_distance:int = 20
-@export var tongue_speed:int = 600
+@export var tongue_speed:int = 900
 @export var frog_lick_force = 300
 @export var target_lick_type:int = 0
 @export var grapple_termination_threshold:int = 5
