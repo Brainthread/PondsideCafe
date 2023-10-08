@@ -75,13 +75,15 @@ func _handle_lick_attachment(delta, relative_position):
 		_reset_lick()
 	
 func _handle_lick_draggable(delta, relative_position):
-	if lick_drag_node == null || !lick_drag_node is RigidBody2D:
+	if lick_drag_node == null || !lick_drag_node.is_in_group("Draggables"):
 		_reset_lick()
 		return
+	lick_drag_node._get_licked()
 	var relative_object_position = lick_drag_node.position - position
 	var relative_normal = relative_position.normalized()
 	lick_drag_node.linear_velocity = grapple_drag_speed * -relative_normal
-	pass
+	if lick_target.distance_to(position) < grapple_termination_threshold:
+		_reset_lick()
 
 func _handle_lick_collision(delta):
 	var lick_type = lick_area._is_licking()
