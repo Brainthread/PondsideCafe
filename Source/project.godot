@@ -13,6 +13,8 @@ config_version=5
 config/name="Source"
 run/main_scene="res://Scenes/Stages/café.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [dotnet]
