@@ -3,6 +3,7 @@ extends Node2D
 @onready var guestScene = preload("res://Scenes/Objects/guest.tscn")
 var guestList = []
 var insectList = ["Worm", "Fly", "Cricket"]
+var requestList = ["Leaf", "Blueberry", "Shroom"]
 var initialPos = Vector2(0,0)
 var waiting = false
 var guestCap = 10
@@ -47,9 +48,10 @@ func remove_guest(food):
 func spawn_timer():
 	waiting = true
 	var t = randi_range(2,5)
-	var type = randi_range(0,2)
+	var i_type = randi_range(0,2)
+	var r_type = randi_range(0,2)
 	await get_tree().create_timer(t).timeout
-	spawn_insect(insectList[type], "shroom")
+	spawn_insect(insectList[i_type], requestList[r_type])
 	waiting = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

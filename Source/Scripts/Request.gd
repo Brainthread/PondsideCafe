@@ -8,6 +8,7 @@ func _ready():
 
 func setup(request):
 	orderRequest = request
+	$Order.position.x -= 2
 	$Order.texture = load("res://Sprites/" + orderRequest + ".png")
 	
 	

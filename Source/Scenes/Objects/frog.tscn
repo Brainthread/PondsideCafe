@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Groundray.gd" id="3_nsrjf"]
 [ext_resource type="Script" path="res://Scenes/Objects/GroundCheckZone.gd" id="4_ejutv"]
 [ext_resource type="Script" path="res://Scripts/LickCheck.gd" id="6_up6nd"]
-[ext_resource type="Texture2D" uid="uid://b57s522f7qb7r" path="res://Sprites/aseprite/Lick-end.svg" id="7_unc7n"]
+[ext_resource type="Texture2D" uid="uid://b57s522f7qb7r" path="res://Sprites/Lick-end.svg" id="7_qd4kt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0t7av"]
 size = Vector2(30, 23)
@@ -68,6 +68,6 @@ shape = SubResource("CircleShape2D_y4xug")
 
 [node name="Sprite2D" type="Sprite2D" parent="LickCheck"]
 scale = Vector2(2, 2)
-texture = ExtResource("7_unc7n")
+texture = ExtResource("7_qd4kt")
 
 [connection signal="animation_finished" from="FrogAnim" to="FrogAnim" method="_on_frog_anim_animation_finished"]
