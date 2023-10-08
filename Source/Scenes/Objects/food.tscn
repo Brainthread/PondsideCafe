@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6a6rfepjx74g"]
 
 [ext_resource type="Script" path="res://Scripts/Foodstuff.gd" id="1_quiuw"]
-[ext_resource type="Texture2D" uid="uid://dwvgtuw2tg61y" path="res://Sprites/shroom.png" id="2_2i4bi"]
-[ext_resource type="Texture2D" uid="uid://puqecnt47vqu" path="res://Sprites/Blueberry.png" id="2_auacm"]
-[ext_resource type="Texture2D" uid="uid://ctactxxkywlg8" path="res://Sprites/Leaf.png" id="4_7yf8o"]
+[ext_resource type="Texture2D" uid="uid://d00dn48j3eoys" path="res://Sprites/Blueberry-32.png" id="2_mncia"]
+[ext_resource type="Texture2D" uid="uid://cpi0wadxllogq" path="res://Sprites/Shroom-32.png" id="3_e0yp0"]
+[ext_resource type="Texture2D" uid="uid://dr5rm0lsuiik7" path="res://Sprites/Leaf-32.png" id="4_scr00"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8jq7q"]
-radius = 2.66667
-height = 8.66666
+radius = 5.66667
+height = 15.3333
 
 [node name="Dragable" type="RigidBody2D" groups=["Draggables"]]
 position = Vector2(19, 50)
@@ -15,13 +15,13 @@ collision_layer = 8
 collision_mask = 54
 gravity_scale = 0.5
 script = ExtResource("1_quiuw")
-berryTexture = ExtResource("2_auacm")
-shroomTexture = ExtResource("2_2i4bi")
-leafTexture = ExtResource("4_7yf8o")
+berryTexture = ExtResource("2_mncia")
+shroomTexture = ExtResource("3_e0yp0")
+leafTexture = ExtResource("4_scr00")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_8jq7q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_2i4bi")
+texture = ExtResource("3_e0yp0")

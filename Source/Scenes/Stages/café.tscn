@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://br67t6ca1tg"]
+[gd_scene load_steps=28 format=3 uid="uid://br67t6ca1tg"]
 
 [ext_resource type="Script" path="res://Scripts/SceneCam.gd" id="1_33sim"]
 [ext_resource type="Script" path="res://Scenes/Stages/GameManager.gd" id="1_epq12"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bohiwo7rgaauv" path="res://Sprites/aseprite/log_2.png" id="12_mp5cp"]
 [ext_resource type="Texture2D" uid="uid://drpaqk7jwbwgu" path="res://Sprites/aseprite/Bush.png" id="13_30sri"]
 [ext_resource type="Script" path="res://Scripts/FoodSpawnManager.gd" id="14_52emm"]
+[ext_resource type="Texture2D" uid="uid://bsbqwek6kegda" path="res://Sprites/Cricket-thumbs.png" id="17_4epky"]
 
 [sub_resource type="TileSet" id="TileSet_03jer"]
 
@@ -58,7 +59,8 @@ size = Vector2(649, 20)
 
 [node name="Café" type="Node2D"]
 script = ExtResource("1_epq12")
-metadata/_edit_vertical_guides_ = [649.0]
+metadata/_edit_vertical_guides_ = [649.0, 323.0, 451.0]
+metadata/_edit_horizontal_guides_ = [80.0, 110.0]
 
 [node name="SceneCam" type="Camera2D" parent="."]
 zoom = Vector2(1.85, 1.85)
@@ -102,6 +104,7 @@ vertical_alignment = 1
 [node name="GameOver" type="Label" parent="SceneCam/GameOver"]
 texture_filter = 1
 texture_repeat = 1
+layout_mode = 0
 offset_left = -71.0
 offset_top = 41.0
 offset_right = 161.0
@@ -302,6 +305,10 @@ z_index = -1
 position = Vector2(428, -89)
 texture = ExtResource("13_30sri")
 
+[node name="Log3" type="Sprite2D" parent="Statics"]
+position = Vector2(413, 101)
+texture = ExtResource("12_mp5cp")
+
 [node name="Log2" type="Sprite2D" parent="Statics"]
 z_index = -1
 position = Vector2(362, 98)
@@ -342,12 +349,17 @@ shape = SubResource("RectangleShape2D_ew80o")
 script = ExtResource("14_52emm")
 berrySpawnArea = Vector4(389, 468, -108, -51)
 leafSpawnArea = Vector4(0, 640, -175, -80)
-shroomSpawnArea = Vector4(326, 396, 86, 117)
+shroomSpawnArea = Vector4(323, 451, 70, 110)
 
 [node name="Bush" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(428, -89)
 texture = ExtResource("13_30sri")
+
+[node name="Cricket-thumbs" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(-260, -159)
+texture = ExtResource("17_4epky")
 
 [connection signal="area_entered" from="Areas/Furniture" to="StackedGuest" method="_on_furniture_area_entered"]
 [connection signal="body_entered" from="Areas/Furniture" to="StackedGuest" method="_on_furniture_body_entered"]
