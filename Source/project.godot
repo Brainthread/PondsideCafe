@@ -51,6 +51,7 @@ delete={
 2d_physics/layer_5="Table"
 2d_physics/layer_6="Border"
 2d_physics/layer_7="PlayerBorder"
+2d_physics/layer_8="LickableNocollision"
 
 [rendering]
 

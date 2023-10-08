@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://br67t6ca1tg"]
+[gd_scene load_steps=25 format=3 uid="uid://br67t6ca1tg"]
 
 [ext_resource type="Script" path="res://Scripts/SceneCam.gd" id="1_33sim"]
+[ext_resource type="Script" path="res://Scenes/Stages/GameManager.gd" id="1_epq12"]
 [ext_resource type="PackedScene" uid="uid://kd7uxyh1weri" path="res://Scenes/Objects/frog.tscn" id="1_oa0m2"]
 [ext_resource type="Script" path="res://Scripts/StackedGuest.gd" id="3_3r3w5"]
 [ext_resource type="Texture2D" uid="uid://x1h4dp8xej62" path="res://Sprites/tree_background.png" id="4_0173w"]
@@ -11,10 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://bw4av76i0pj5o" path="res://Sprites/pall.png" id="7_u4wul"]
 [ext_resource type="Texture2D" uid="uid://digoa1t75bru" path="res://Sprites/aseprite/Lilypad.png" id="9_2aqs3"]
 [ext_resource type="Texture2D" uid="uid://vu52ovjcybfe" path="res://Sprites/tree_foreground.png" id="10_krs84"]
+[ext_resource type="Texture2D" uid="uid://bohiwo7rgaauv" path="res://Sprites/aseprite/log_2.png" id="12_mp5cp"]
 [ext_resource type="Texture2D" uid="uid://drpaqk7jwbwgu" path="res://Sprites/aseprite/Bush.png" id="13_30sri"]
 [ext_resource type="Script" path="res://Scripts/FoodSpawnManager.gd" id="14_52emm"]
 
 [sub_resource type="TileSet" id="TileSet_03jer"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6anup"]
+bounce = 0.01
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlbuq"]
 size = Vector2(309, 32.25)
@@ -38,20 +43,45 @@ radius = 35.0
 size = Vector2(649, 20)
 
 [node name="Café" type="Node2D"]
-metadata/_edit_horizontal_guides_ = [-177.0, -188.0, -51.0, -51.0, -109.0, -53.0, -159.0, -51.0]
-metadata/_edit_vertical_guides_ = [-93.0, 468.0, 468.0, 389.0, 468.0]
+script = ExtResource("1_epq12")
+metadata/_edit_vertical_guides_ = [649.0]
 
 [node name="SceneCam" type="Camera2D" parent="."]
 zoom = Vector2(1.85, 1.85)
 script = ExtResource("1_33sim")
+
+[node name="Label" type="Label" parent="SceneCam"]
+texture_filter = 1
+texture_repeat = 1
+offset_left = -37.0
+offset_top = -151.0
+offset_right = 38.0
+offset_bottom = -125.0
+text = "60"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="SceneCam"]
+texture_filter = 1
+texture_repeat = 1
+offset_left = -74.0
+offset_top = -302.0
+offset_right = 1.0
+offset_bottom = -276.0
+text = "60"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_03jer")
 format = 2
 
 [node name="Frog" parent="." instance=ExtResource("1_oa0m2")]
+z_index = 2
 position = Vector2(-242, -30)
-collision_mask = 39
+collision_mask = 103
+physics_material_override = SubResource("PhysicsMaterial_6anup")
+vertical_jump_force = 500
 
 [node name="StackedGuest" type="Node2D" parent="."]
 position = Vector2(-222, 98)
@@ -61,7 +91,7 @@ script = ExtResource("3_3r3w5")
 
 [node name="Branches" type="StaticBody2D" parent="Statics"]
 z_index = -1
-collision_layer = 4
+collision_layer = 64
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Statics/Branches"]
 polygon = PackedVector2Array(-283, -175, -235, -130, -205, -98, -186, -86, -120, -93, -94, -101, 3, -107, 43, -103, 101, -89, 147, -93, 163, -107, 156, -115, 146, -106, 137, -103, 135, -105, 130, -101, 121, -100, 120, -98, 100, -100, 90, -106, 86, -104, 83, -109, 79, -106, 66, -110, 50, -115, 48, -118, 32, -121, 31, -119, 1, -123, 22, -149, 37, -165, 55, -178)
@@ -72,6 +102,12 @@ texture = ExtResource("10_krs84")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Statics/Branches"]
 polygon = PackedVector2Array(149, -177, 160, -168, 172, -160, 180, -157, 214, -134, 221, -132, 239, -120, 240, -116, 247, -113, 251, -114, 264, -111, 282, -113, 286, -110, 309, -120, 326, -126, 365, -132, 368, -130, 380, -130, 382, -133, 386, -131, 394, -134, 409, -134, 449, -134, 459, -131, 474, -129, 483, -131, 497, -129, 523, -129, 538, -128, 559, -127, 549, -118, 537, -106, 515, -106, 497, -106, 493, -102, 480, -100, 458, -108, 454, -105, 444, -107, 440, -97, 456, -95, 461, -92, 462, -88, 480, -88, 498, -92, 510, -92, 514, -88, 557, -97, 560, -95, 587, -101, 590, -109, 597, -118, 604, -121, 606, -126, 609, -124, 630, -139, 636, -139, 656, -147, 668, -149, 671, -146, 714, -162, 713, -177, 611, -177, 225, -177)
+
+[node name="ForegroundGrass" type="Sprite2D" parent="Statics"]
+z_index = 10
+position = Vector2(199, -1)
+scale = Vector2(1, 1)
+texture = ExtResource("6_c7n0r")
 
 [node name="Background" type="StaticBody2D" parent="Statics"]
 position = Vector2(93, -34)
@@ -90,12 +126,6 @@ z_index = -6
 position = Vector2(138.889, 35)
 scale = Vector2(1.28601, 1)
 texture = ExtResource("5_nyeye")
-
-[node name="ForegroundGrass" type="Sprite2D" parent="Statics/Background"]
-z_index = 1
-position = Vector2(136.317, 33)
-scale = Vector2(1.28601, 1)
-texture = ExtResource("6_c7n0r")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Statics/Background"]
 
@@ -143,6 +173,7 @@ shape = SubResource("RectangleShape2D_sp5jg")
 one_way_collision = true
 
 [node name="Signage" type="Sprite2D" parent="Statics"]
+z_index = -1
 position = Vector2(-293, 97)
 texture = ExtResource("6_alpm4")
 
@@ -156,7 +187,7 @@ shape = SubResource("RectangleShape2D_idl8n")
 
 [node name="Lilypad" type="StaticBody2D" parent="Statics"]
 z_index = -1
-position = Vector2(125, 119)
+position = Vector2(118, 114)
 collision_layer = 4
 collision_mask = 4
 
@@ -224,6 +255,17 @@ shape = SubResource("RectangleShape2D_8664n")
 [node name="Sprite2D" type="Sprite2D" parent="Statics/Lilypad/Lilypad/Lilypad/Lilypad/Lilypad"]
 texture = ExtResource("9_2aqs3")
 
+[node name="Bush" type="Sprite2D" parent="Statics"]
+z_index = -1
+position = Vector2(428, -89)
+texture = ExtResource("13_30sri")
+
+[node name="Log2" type="Sprite2D" parent="Statics"]
+z_index = -1
+position = Vector2(362, 98)
+rotation = -3.14159
+texture = ExtResource("12_mp5cp")
+
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="Furniture" type="Area2D" parent="Areas"]
@@ -256,11 +298,8 @@ shape = SubResource("RectangleShape2D_ew80o")
 [node name="FoodSpawnManager" type="Node2D" parent="."]
 script = ExtResource("14_52emm")
 berrySpawnArea = Vector4(389, 468, -108, -51)
-
-[node name="Bush" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(428, -89)
-texture = ExtResource("13_30sri")
+leafSpawnArea = Vector4(0, 640, -175, -80)
+shroomSpawnArea = Vector4(326, 396, 86, 117)
 
 [connection signal="area_entered" from="Areas/Water" to="Frog" method="_on_water_area_entered"]
 [connection signal="area_exited" from="Areas/Water" to="Frog" method="_on_water_area_exited"]
