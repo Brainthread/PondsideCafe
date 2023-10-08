@@ -30,13 +30,14 @@ func place_guest(guest):
 
 func reorder_guests():
 	var waitingList = guestList
-	print(waitingList.size())
 	guestList = []
 	for guest in waitingList:
 		place_guest(guest)
 	
 
 func remove_guest(food):
+	while satisfying:
+		await get_tree().create_timer(0.1).timeout
 	satisfying = true
 	var satisfiedCustomer
 	for n in range(guestList.size()):
@@ -44,21 +45,33 @@ func remove_guest(food):
 			satisfiedCustomer = n
 			break
 	if satisfiedCustomer != null:
-		guestList[satisfiedCustomer].satisfy()
-		await get_tree().create_timer(0.5).timeout
-		guestList[satisfiedCustomer].kill()
-		guestList.remove_at(satisfiedCustomer)
-		reorder_guests()
+		remove_from_list(satisfiedCustomer)
 	satisfying = false
+
+func remove_dissatisfied_guest(guest):
+	while satisfying:
+		await get_tree().create_timer(0.1).timeout
+	satisfying = true
+	var dissatisfiedCustomer = guestList.find(guest)
+	remove_from_list(dissatisfiedCustomer)
+	satisfying = false
+
+func remove_from_list(guest_no):
+	guestList[guest_no].satisfy()
+	await get_tree().create_timer(0.4).timeout
+	guestList[guest_no].kill()
+	guestList.remove_at(guest_no)
+	reorder_guests()
 
 func spawn_timer():
 	waiting = true
-	var t = randi_range(1,2)
+	var t = randi_range(5,20)
 	var i_type = randi_range(0,2)
 	var r_type = randi_range(0,2)
 	await get_tree().create_timer(t).timeout
 	spawn_insect(insectList[i_type], requestList[r_type])
 	waiting = false
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

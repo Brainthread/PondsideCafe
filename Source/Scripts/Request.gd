@@ -7,9 +7,11 @@ func _ready():
 	pass
 
 func pop():
-	print("yay")
 	remove_child($Order) 
 	$SpeechBubble.play("Pop")
+
+func angry():
+	$SpeechBubble.play("Angry")
 
 func setup(request):
 	orderRequest = request
@@ -17,7 +19,9 @@ func setup(request):
 	$Order.texture = load("res://Sprites/" + orderRequest + ".png")
 	
 	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
