@@ -1,14 +1,12 @@
-extends TextureButton
+extends CanvasLayer
 
+@onready var credits = $Credits
+@onready var main = $Main
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_credit_pressed():
+	main.visible = false
+	credits.visible = true
 
-
-func _on_pressed():
+func _on_new_game_pressed():
+	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file("res://Scenes/Stages/café.tscn")
