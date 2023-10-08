@@ -7,10 +7,19 @@ var playing
 var prevY
 var in_water
 var landing_bleh 
+var audio
+
+# Audio
+var JumpSound
+var LandSound
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	audio = get_node("../Audio")
+	LandSound = preload("res://Audio/Land.mp3")
+	JumpSound = preload("res://Audio/Jump.mp3")
+	
 	frog = get_node("../../Frog")
 	frog.jumping.connect(_on_jump)
 	frog.lick_start.connect(_on_lick_start)
@@ -38,6 +47,8 @@ func _eval_anim():
 			play("Dive")
 		else:
 			play("Land")
+			audio.stream = LandSound
+			audio.play()
 
 func _on_frog_anim_animation_finished():
 	if animation == "Land":
@@ -53,6 +64,8 @@ func _on_jump():
 	else:
 		play("Jump-start")
 	prevY = frog.position.y
+	audio.stream = JumpSound
+	audio.play()
 	
 func _on_lick_start():
 	if !in_water && animation != "Bleh":
@@ -69,6 +82,7 @@ func _on_water_exit():
 	in_water = false
 	
 func _on_drag_start():
+	print("bleh")
 	play("Bleh")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

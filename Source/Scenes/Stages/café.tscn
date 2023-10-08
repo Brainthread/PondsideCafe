@@ -1,18 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://br67t6ca1tg"]
+[gd_scene load_steps=21 format=3 uid="uid://br67t6ca1tg"]
 
 [ext_resource type="Script" path="res://Scripts/SceneCam.gd" id="1_33sim"]
 [ext_resource type="PackedScene" uid="uid://kd7uxyh1weri" path="res://Scenes/Objects/frog.tscn" id="1_oa0m2"]
 [ext_resource type="Script" path="res://Scripts/StackedGuest.gd" id="3_3r3w5"]
 [ext_resource type="Texture2D" uid="uid://x1h4dp8xej62" path="res://Sprites/tree_background.png" id="4_0173w"]
-[ext_resource type="Texture2D" uid="uid://cx7wcvrllysx6" path="res://Sprites/background_grass.png" id="5_nyeye"]
+[ext_resource type="Texture2D" uid="uid://u8agb452f676" path="res://Sprites/background_grass.png" id="5_nyeye"]
 [ext_resource type="Texture2D" uid="uid://bl5amlhuur1sg" path="res://Sprites/Signage.png" id="6_alpm4"]
-[ext_resource type="Texture2D" uid="uid://c41olgvnwcj8p" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
+[ext_resource type="Texture2D" uid="uid://vai0eqiocyku" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
 [ext_resource type="Texture2D" uid="uid://ut74mfwxgre7" path="res://Sprites/bord.png" id="6_iomv4"]
 [ext_resource type="Texture2D" uid="uid://bw4av76i0pj5o" path="res://Sprites/pall.png" id="7_u4wul"]
 [ext_resource type="Texture2D" uid="uid://digoa1t75bru" path="res://Sprites/aseprite/Lilypad.png" id="9_2aqs3"]
-[ext_resource type="Script" path="res://Scripts/Foodstuff.gd" id="9_lr231"]
 [ext_resource type="Texture2D" uid="uid://vu52ovjcybfe" path="res://Sprites/tree_foreground.png" id="10_krs84"]
-[ext_resource type="Texture2D" uid="uid://dwvgtuw2tg61y" path="res://Sprites/shroom.png" id="12_75jnd"]
+
+[ext_resource type="Texture2D" uid="uid://dwvgtuw2tg61y" path="res://Sprites/Shroom.png" id="12_75jnd"]
+
 [ext_resource type="Script" path="res://Scripts/FoodSpawnManager.gd" id="14_52emm"]
 
 [sub_resource type="TileSet" id="TileSet_03jer"]
@@ -32,9 +33,6 @@ size = Vector2(363, 42)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8664n"]
 size = Vector2(80, 12)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq5uy"]
-size = Vector2(18, 14)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_550cl"]
 radius = 35.0
 
@@ -42,6 +40,8 @@ radius = 35.0
 size = Vector2(649, 20)
 
 [node name="Café" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-177.0, -188.0]
+metadata/_edit_vertical_guides_ = [-93.0]
 
 [node name="SceneCam" type="Camera2D" parent="."]
 zoom = Vector2(1.85, 1.85)
@@ -115,6 +115,7 @@ texture = ExtResource("4_0173w")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Statics/Border of life"]
 position = Vector2(1226, 0)
+scale = Vector2(1, 7.04)
 collision_layer = 33
 collision_mask = 33
 
@@ -123,6 +124,7 @@ position = Vector2(-412, 44)
 shape = SubResource("RectangleShape2D_t5hac")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Statics/Border of life"]
+scale = Vector2(1, 5.08)
 collision_layer = 33
 collision_mask = 33
 
@@ -131,13 +133,16 @@ position = Vector2(-412, 44)
 shape = SubResource("RectangleShape2D_t5hac")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Statics/Border of life"]
+position = Vector2(0, -79)
 collision_layer = 33
 collision_mask = 33
 
 [node name="Border" type="CollisionShape2D" parent="Statics/Border of life/StaticBody2D"]
 position = Vector2(198.9, -149.75)
+rotation = 3.14159
 scale = Vector2(58.24, 1)
 shape = SubResource("RectangleShape2D_sp5jg")
+one_way_collision = true
 
 [node name="Signage" type="Sprite2D" parent="Statics"]
 position = Vector2(-293, 97)
@@ -221,21 +226,6 @@ shape = SubResource("RectangleShape2D_8664n")
 [node name="Sprite2D" type="Sprite2D" parent="Statics/Lilypad/Lilypad/Lilypad/Lilypad/Lilypad"]
 texture = ExtResource("9_2aqs3")
 
-[node name="Dragable" type="RigidBody2D" parent="." groups=["Draggables"]]
-position = Vector2(19, 50)
-collision_layer = 8
-collision_mask = 62
-gravity_scale = 0.5
-script = ExtResource("9_lr231")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dragable"]
-scale = Vector2(3, 3)
-shape = SubResource("RectangleShape2D_uq5uy")
-
-[node name="Sprite2D" type="Sprite2D" parent="Dragable"]
-scale = Vector2(3, 3)
-texture = ExtResource("12_75jnd")
-
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="Furniture" type="Area2D" parent="Areas"]
@@ -267,6 +257,7 @@ shape = SubResource("RectangleShape2D_ew80o")
 
 [node name="FoodSpawnManager" type="Node2D" parent="."]
 script = ExtResource("14_52emm")
+leafSpawnArea = Vector4(0, -250, 0, -177)
 
 [connection signal="area_entered" from="Areas/Water" to="Frog" method="_on_water_area_entered"]
 [connection signal="area_exited" from="Areas/Water" to="Frog" method="_on_water_area_exited"]
