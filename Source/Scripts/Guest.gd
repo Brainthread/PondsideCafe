@@ -23,8 +23,10 @@ func setup(insect, request):
 func get_request():
 	return requestType
 
+func satisfy():
+	requestNode.pop()
+
 func kill():
-	print("ah")
 	queue_free() #:(
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

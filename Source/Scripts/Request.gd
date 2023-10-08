@@ -6,6 +6,11 @@ var orderComplete = false
 func _ready():
 	pass
 
+func pop():
+	print("yay")
+	remove_child($Order) 
+	$SpeechBubble.play("Pop")
+
 func setup(request):
 	orderRequest = request
 	$Order.position.x -= 2
