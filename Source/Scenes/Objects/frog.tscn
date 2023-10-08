@@ -59,8 +59,8 @@ default_color = Color(0.490196, 0.156863, 0.133333, 1)
 
 [node name="LickCheck" type="Area2D" parent="."]
 scale = Vector2(0.3, 0.3)
-collision_layer = 14
-collision_mask = 15
+collision_layer = 78
+collision_mask = 79
 script = ExtResource("6_up6nd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LickCheck"]

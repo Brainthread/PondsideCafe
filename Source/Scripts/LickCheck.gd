@@ -3,7 +3,7 @@ extends Area2D
 func _is_licking():
 	for body in get_overlapping_bodies():
 		var layer = body.get_collision_layer()
-		if layer == 4:
+		if layer == 4 || layer == 64:
 			return 2
 		if layer == 8:
 			return 1

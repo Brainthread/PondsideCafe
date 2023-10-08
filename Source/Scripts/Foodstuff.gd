@@ -42,6 +42,7 @@ func _set_foodtype(my_type):
 		freeze = true
 	if my_foodtype == 3:
 		gravity_scale = 0.2
+		linear_damp = 10
 		texturenode.texture = leafTexture
 		my_foodtype_string = "Leaf"
 		freeze = false
