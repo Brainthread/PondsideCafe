@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvqmwv8xmc31f"]
+
+[ext_resource type="Script" path="res://Scenes/Stages/SplashParticle.gd" id="1_7o20j"]
+
+[node name="SplashParticle" type="RigidBody2D"]
+position = Vector2(375.5, 132)
+script = ExtResource("1_7o20j")
+
+[node name="ParticleTexture" type="Sprite2D" parent="."]
