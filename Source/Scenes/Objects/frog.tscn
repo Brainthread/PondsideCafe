@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://kd7uxyh1weri"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/FrogAnim.gd" id="1_4nh6b"]
 [ext_resource type="Script" path="res://Scripts/Frog.gd" id="1_kq0gs"]
 [ext_resource type="SpriteFrames" uid="uid://caevkpw1qk8tv" path="res://Sprites/animation/frog.res" id="2_2tf0k"]
+[ext_resource type="Script" path="res://Scripts/FrogAnim.gd" id="3_j2dh8"]
 [ext_resource type="Script" path="res://Scripts/Groundray.gd" id="3_nsrjf"]
-[ext_resource type="Script" path="res://Scenes/Objects/GroundCheckZone.gd" id="4_ejutv"]
+[ext_resource type="Script" path="res://Scripts/GroundCheckZone.gd" id="5_3mn70"]
 [ext_resource type="Script" path="res://Scripts/LickCheck.gd" id="6_up6nd"]
 [ext_resource type="Texture2D" uid="uid://b57s522f7qb7r" path="res://Sprites/Lick-end.svg" id="7_qd4kt"]
 
@@ -32,7 +32,7 @@ tongue_speed = 500
 sprite_frames = ExtResource("2_2tf0k")
 animation = &"Dive"
 autoplay = "Idle"
-script = ExtResource("1_4nh6b")
+script = ExtResource("3_j2dh8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
@@ -44,8 +44,8 @@ collide_with_areas = true
 script = ExtResource("3_nsrjf")
 
 [node name="Groundcheck" type="Area2D" parent="."]
-collision_mask = 3
-script = ExtResource("4_ejutv")
+collision_mask = 7
+script = ExtResource("5_3mn70")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Groundcheck"]
 position = Vector2(0, 20.5)

@@ -15,12 +15,12 @@ enum foodtype {none, berry, shroom, leaf}
 var my_foodtype = foodtype.none
 var plate
 var water
+var my_foodtype_string
 signal destroyed
 signal was_eaten(my_type)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	scale = Vector2(0, 0)
-	freeze = true;
 	plate = get_node("/root/Café").get_node("Areas/Furniture")
 	water = get_node("/root/Café").get_node("Areas/Water")
 	plate.body_entered.connect(_on_enter_plate_range)
@@ -31,10 +31,16 @@ func _set_foodtype(my_type):
 	var texturenode = $Sprite2D
 	if my_foodtype == 1:
 		texturenode.texture = berryTexture
+		my_foodtype_string = "Blueberry"
+		freeze = true
 	if my_foodtype == 2:
 		texturenode.texture = shroomTexture
+		my_foodtype_string = "Shroom"
+		freeze = true
 	if my_foodtype == 3:
 		texturenode.texture = leafTexture
+		my_foodtype_string = "Leaf"
+		freeze = false
 
 func _get_licked():
 	freeze = false;
@@ -51,9 +57,7 @@ func _on_enter_plate_range(body):
 	print(body)
 	if(body != self):
 		return
-	var my_foodtype_string = ""
-	
-	was_eaten.emit(my_foodtype)
+	was_eaten.emit(my_foodtype_string)
 	destroyed.emit()
 	queue_free()
 

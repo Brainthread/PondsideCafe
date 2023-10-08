@@ -69,7 +69,6 @@ func _on_water_exit():
 	in_water = false
 	
 func _on_drag_start():
-	print("bleh")
 	play("Bleh")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
