@@ -50,12 +50,6 @@ scale = Vector2(6.12139, 1)
 shape = SubResource("RectangleShape2D_vlbuq")
 one_way_collision = true
 
-[node name="TreeBackground" type="Sprite2D" parent="Background"]
-z_index = -7
-position = Vector2(140.175, 35)
-scale = Vector2(1.28601, 1)
-texture = ExtResource("4_0173w")
-
 [node name="BackgroundGrass" type="Sprite2D" parent="Background"]
 z_index = -6
 position = Vector2(138.889, 35)
@@ -67,6 +61,18 @@ z_index = 1
 position = Vector2(136.317, 33)
 scale = Vector2(1.28601, 1)
 texture = ExtResource("6_c7n0r")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+position = Vector2(300, 70)
+scale = Vector2(0.777601, 1)
+motion_scale = Vector2(0.6, 0.6)
+
+[node name="TreeBackground" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer"]
+z_index = -7
+scale = Vector2(1.28601, 1)
+texture = ExtResource("4_0173w")
 
 [node name="Furniture" type="Area2D" parent="."]
 position = Vector2(-136, 108)
