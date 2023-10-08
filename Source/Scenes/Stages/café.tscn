@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://kd7uxyh1weri" path="res://Scenes/Objects/frog.tscn" id="1_oa0m2"]
 [ext_resource type="Script" path="res://Scripts/StackedGuest.gd" id="3_3r3w5"]
 [ext_resource type="Texture2D" uid="uid://x1h4dp8xej62" path="res://Sprites/tree_background.png" id="4_0173w"]
-[ext_resource type="Texture2D" uid="uid://cx7wcvrllysx6" path="res://Sprites/background_grass.png" id="5_nyeye"]
-[ext_resource type="Texture2D" uid="uid://c41olgvnwcj8p" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
+
+[ext_resource type="Texture2D" uid="uid://u8agb452f676" path="res://Sprites/background_grass.png" id="5_nyeye"]
+[ext_resource type="Texture2D" uid="uid://vai0eqiocyku" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
 [ext_resource type="Texture2D" uid="uid://ut74mfwxgre7" path="res://Sprites/bord.png" id="6_iomv4"]
 [ext_resource type="Texture2D" uid="uid://bw4av76i0pj5o" path="res://Sprites/pall.png" id="7_u4wul"]
 [ext_resource type="Texture2D" uid="uid://bbayiev3h0i1h" path="res://icon.svg" id="9_cjjxi"]
@@ -54,12 +55,6 @@ scale = Vector2(6.12139, 1)
 shape = SubResource("RectangleShape2D_vlbuq")
 one_way_collision = true
 
-[node name="TreeBackground" type="Sprite2D" parent="Background"]
-z_index = -7
-position = Vector2(140.175, 35)
-scale = Vector2(1.28601, 1)
-texture = ExtResource("4_0173w")
-
 [node name="BackgroundGrass" type="Sprite2D" parent="Background"]
 z_index = -6
 position = Vector2(138.889, 35)
@@ -71,6 +66,18 @@ z_index = 1
 position = Vector2(136.317, 33)
 scale = Vector2(1.28601, 1)
 texture = ExtResource("6_c7n0r")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+position = Vector2(300, 70)
+scale = Vector2(0.777601, 1)
+motion_scale = Vector2(0.6, 0.6)
+
+[node name="TreeBackground" type="Sprite2D" parent="Background/ParallaxBackground/ParallaxLayer"]
+z_index = -7
+scale = Vector2(1.28601, 1)
+texture = ExtResource("4_0173w")
 
 [node name="Furniture" type="Area2D" parent="."]
 position = Vector2(-136, 108)

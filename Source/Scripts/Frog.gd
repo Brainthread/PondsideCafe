@@ -20,6 +20,10 @@ var tongueLine
 var ground_ray
 var ground_zone
 
+#Animation
+signal jumping
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ground_ray = get_node("Groundray")
@@ -27,6 +31,8 @@ func _ready():
 	tongueLine = get_node("Line2D")
 	lick_area = get_node("LickCheck")
 	tongue_position = Vector2(0, 0)
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -123,6 +129,8 @@ func _jump(mouse_position):
 	jump_velocity.x = (-relative_h_magnitude) * horizontal_jump_force
 	jump_velocity.y = (-relative_v_magnitude) * vertical_jump_force
 	linear_velocity = jump_velocity
+	jumping.emit()
+	
 
 func _jumpAllowed():
 	if(ground_zone._is_on_ground()):
