@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://lg47m1rygdlq"]
+
+[ext_resource type="Script" path="res://Scripts/Foodstuff.gd" id="1_quiuw"]
+[ext_resource type="Texture2D" uid="uid://dwvgtuw2tg61y" path="res://Sprites/shroom.png" id="2_2i4bi"]
+[ext_resource type="Texture2D" uid="uid://puqecnt47vqu" path="res://Sprites/Blueberry.png" id="2_auacm"]
+[ext_resource type="Texture2D" uid="uid://ctactxxkywlg8" path="res://Sprites/Leaf.png" id="4_7yf8o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq5uy"]
+size = Vector2(18, 14)
+
+[node name="Dragable" type="RigidBody2D" groups=["Draggables"]]
+position = Vector2(19, 50)
+collision_layer = 8
+collision_mask = 54
+gravity_scale = 0.5
+script = ExtResource("1_quiuw")
+berryTexture = ExtResource("2_auacm")
+shroomTexture = ExtResource("2_2i4bi")
+leafTexture = ExtResource("4_7yf8o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_uq5uy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_2i4bi")
