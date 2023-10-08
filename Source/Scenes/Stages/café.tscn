@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://br67t6ca1tg"]
+[gd_scene load_steps=15 format=3 uid="uid://br67t6ca1tg"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/SceneCam.gd" id="1_nom56"]
 [ext_resource type="PackedScene" uid="uid://kd7uxyh1weri" path="res://Scenes/Objects/frog.tscn" id="1_oa0m2"]
@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://x1h4dp8xej62" path="res://Sprites/tree_background.png" id="4_0173w"]
 [ext_resource type="Texture2D" uid="uid://cx7wcvrllysx6" path="res://Sprites/background_grass.png" id="5_nyeye"]
 [ext_resource type="Texture2D" uid="uid://c41olgvnwcj8p" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
-[ext_resource type="Texture2D" path="res://Sprites/bord.png" id="6_iomv4"]
-[ext_resource type="Texture2D" path="res://Sprites/pall.png" id="7_u4wul"]
+[ext_resource type="Texture2D" uid="uid://ut74mfwxgre7" path="res://Sprites/bord.png" id="6_iomv4"]
+[ext_resource type="Texture2D" uid="uid://bw4av76i0pj5o" path="res://Sprites/pall.png" id="7_u4wul"]
 [ext_resource type="Texture2D" uid="uid://bbayiev3h0i1h" path="res://icon.svg" id="9_cjjxi"]
 
 [sub_resource type="TileSet" id="TileSet_03jer"]
@@ -21,6 +21,9 @@ radius = 20.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2vbc"]
 size = Vector2(12.1, 12.7)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq5uy"]
+size = Vector2(37, 37)
+
 [node name="Café" type="Node2D"]
 
 [node name="SceneCam" type="Camera2D" parent="."]
@@ -33,6 +36,7 @@ format = 2
 
 [node name="Frog" parent="." instance=ExtResource("1_oa0m2")]
 position = Vector2(-242, -30)
+collision_mask = 7
 
 [node name="StackedGuest" type="Node2D" parent="."]
 position = Vector2(-222, 98)
@@ -90,8 +94,8 @@ shape = SubResource("CircleShape2D_550cl")
 [node name="Jump_Post" type="StaticBody2D" parent="Statics"]
 z_index = -3
 position = Vector2(103, -101)
-collision_layer = 3
-collision_mask = 15
+collision_layer = 4
+collision_mask = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Statics/Jump_Post"]
 position = Vector2(1.5, 0.500002)
@@ -104,8 +108,8 @@ texture = ExtResource("9_cjjxi")
 [node name="Jump_Post2" type="StaticBody2D" parent="Statics"]
 z_index = -3
 position = Vector2(329, -170)
-collision_layer = 3
-collision_mask = 15
+collision_layer = 4
+collision_mask = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Statics/Jump_Post2"]
 position = Vector2(1.5, 0.500002)
@@ -118,8 +122,8 @@ texture = ExtResource("9_cjjxi")
 [node name="Jump_Post3" type="StaticBody2D" parent="Statics"]
 z_index = -3
 position = Vector2(577, -141)
-collision_layer = 3
-collision_mask = 15
+collision_layer = 4
+collision_mask = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Statics/Jump_Post3"]
 position = Vector2(1.5, 0.500002)
@@ -127,4 +131,19 @@ scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_j2vbc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Statics/Jump_Post3"]
+texture = ExtResource("9_cjjxi")
+
+[node name="Dragable" type="RigidBody2D" parent="."]
+position = Vector2(19, 50)
+collision_layer = 8
+collision_mask = 10
+mass = 53.27
+gravity_scale = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dragable"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_uq5uy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Dragable"]
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_cjjxi")
