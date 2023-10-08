@@ -10,3 +10,7 @@ func _on_credit_pressed():
 func _on_new_game_pressed():
 	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file("res://Scenes/Stages/café.tscn")
+
+func _on_return_pressed():
+	main.visible = true
+	credits.visible = false
