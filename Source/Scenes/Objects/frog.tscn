@@ -5,8 +5,8 @@
 [ext_resource type="SpriteFrames" uid="uid://caevkpw1qk8tv" path="res://Sprites/animation/frog.res" id="2_2tf0k"]
 [ext_resource type="Script" path="res://Scripts/Groundray.gd" id="3_nsrjf"]
 [ext_resource type="Script" path="res://Scenes/Objects/GroundCheckZone.gd" id="4_ejutv"]
-[ext_resource type="Texture2D" uid="uid://bbayiev3h0i1h" path="res://icon.svg" id="6_bk3fy"]
 [ext_resource type="Script" path="res://Scripts/LickCheck.gd" id="6_up6nd"]
+[ext_resource type="Texture2D" uid="uid://b57s522f7qb7r" path="res://Sprites/aseprite/Lick-end.svg" id="7_unc7n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0t7av"]
 size = Vector2(30, 23)
@@ -53,9 +53,9 @@ shape = SubResource("RectangleShape2D_cn3px")
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(12, 2, 0, 0)
-width = 4.0
+width = 3.0
 width_curve = SubResource("Curve_dwvrv")
-default_color = Color(0.756863, 0.0823529, 0.309804, 1)
+default_color = Color(0.490196, 0.156863, 0.133333, 1)
 
 [node name="LickCheck" type="Area2D" parent="."]
 scale = Vector2(0.3, 0.3)
@@ -67,8 +67,8 @@ script = ExtResource("6_up6nd")
 shape = SubResource("CircleShape2D_y4xug")
 
 [node name="Sprite2D" type="Sprite2D" parent="LickCheck"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("6_bk3fy")
+scale = Vector2(2, 2)
+texture = ExtResource("7_unc7n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
