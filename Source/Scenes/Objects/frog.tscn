@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Objects/FrogAnim.gd" id="1_4nh6b"]
 [ext_resource type="Script" path="res://Scripts/Frog.gd" id="1_kq0gs"]
-[ext_resource type="SpriteFrames" uid="uid://caevkpw1qk8tv" path="res://Sprites/animation/frog.res" id="2_2tf0k"]
+[ext_resource type="SpriteFrames" path="res://Sprites/animation/frog.res" id="2_2tf0k"]
 [ext_resource type="Script" path="res://Scripts/Groundray.gd" id="3_nsrjf"]
 [ext_resource type="Script" path="res://Scenes/Objects/GroundCheckZone.gd" id="4_ejutv"]
 [ext_resource type="Script" path="res://Scripts/LickCheck.gd" id="6_up6nd"]
