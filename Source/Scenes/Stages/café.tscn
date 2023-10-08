@@ -1,8 +1,19 @@
 [gd_scene load_steps=7 format=3 uid="uid://br67t6ca1tg"]
 
-[ext_resource type="Script" path="res://Scenes/Stages/Frog.gd" id="1_cd75n"]
-[ext_resource type="Texture2D" uid="uid://c3760bpytavu" path="res://Sprites/placeholder_Frog.png" id="1_mxpuw"]
-[ext_resource type="Texture2D" uid="uid://crp5tah3lnqi8" path="res://Sprites/placeholder_leaf.png" id="2_b0vld"]
+[ext_resource type="Script" path="res://Scripts/SceneCam.gd" id="1_33sim"]
+[ext_resource type="PackedScene" uid="uid://kd7uxyh1weri" path="res://Scenes/Objects/frog.tscn" id="1_oa0m2"]
+[ext_resource type="Script" path="res://Scripts/StackedGuest.gd" id="3_3r3w5"]
+[ext_resource type="Texture2D" uid="uid://x1h4dp8xej62" path="res://Sprites/tree_background.png" id="4_0173w"]
+[ext_resource type="Texture2D" uid="uid://cvyfq3nrr7csk" path="res://Sprites/background_grass.png" id="5_nyeye"]
+[ext_resource type="Texture2D" uid="uid://bl5amlhuur1sg" path="res://Sprites/Signage.png" id="6_alpm4"]
+[ext_resource type="Texture2D" uid="uid://blherx8i8sb0u" path="res://Sprites/foreground_grass.png" id="6_c7n0r"]
+[ext_resource type="Texture2D" uid="uid://ut74mfwxgre7" path="res://Sprites/bord.png" id="6_iomv4"]
+[ext_resource type="Texture2D" uid="uid://bw4av76i0pj5o" path="res://Sprites/pall.png" id="7_u4wul"]
+[ext_resource type="Texture2D" uid="uid://v1vusvi45kqx" path="res://Sprites/aseprite/Lilypad.png" id="9_2aqs3"]
+[ext_resource type="Script" path="res://Scripts/Foodstuff.gd" id="9_lr231"]
+[ext_resource type="Texture2D" uid="uid://vu52ovjcybfe" path="res://Sprites/tree_foreground.png" id="10_krs84"]
+[ext_resource type="Texture2D" uid="uid://dwvgtuw2tg61y" path="res://Sprites/shroom.png" id="12_75jnd"]
+[ext_resource type="Script" path="res://Scripts/FoodSpawnManager.gd" id="14_52emm"]
 
 [sub_resource type="TileSet" id="TileSet_03jer"]
 

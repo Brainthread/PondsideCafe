@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://chqyroiadnx6o"]
+
+[ext_resource type="Texture2D" uid="uid://7cdsxpxs7hn2" path="res://UI/New Game.png" id="1_jg8pg"]
+[ext_resource type="Texture2D" uid="uid://bqv6q2mmqjdoh" path="res://UI/Title.png" id="1_l8f2j"]
+[ext_resource type="Texture2D" uid="uid://d16q4caka0baw" path="res://UI/Credits.png" id="3_p0hpn"]
+[ext_resource type="Texture2D" uid="uid://c1ms14qx540vo" path="res://UI/Ver.png" id="4_cb28e"]
+[ext_resource type="Texture2D" uid="uid://bkjdlgu1skebe" path="res://UI/Illustration.png" id="4_ebya5"]
+
+[node name="MarginContainer" type="MarginContainer"]
+custom_minimum_size = Vector2(512, 352)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 150
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Title" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 120)
+layout_mode = 2
+texture = ExtResource("1_l8f2j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="New Game" type="TextureRect" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_jg8pg")
+
+[node name="Credits" type="TextureRect" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_p0hpn")
+
+[node name="Info" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("4_cb28e")
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="Illustration" type="TextureRect" parent="HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("4_ebya5")
