@@ -1,2 +1,2 @@
 # PondsideCafe
-Is game
+A game about a frog serving food
